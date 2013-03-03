@@ -1,0 +1,77 @@
+//
+//  QuickOpenNI.h
+//
+//  Created by BRenfer on 2/28/13.
+//  Copyright (c) 2013 __MyCompanyName__. All rights reserved.
+//
+
+#pragma once
+
+#include "ofMain.h"
+#include <OpenNI.h>
+
+#define MAX_DEPTH 10000
+
+static int bOpenNIInitialized = false;
+
+class OpenNIFeed : public ofBaseVideo, protected ofThread
+{
+public:
+    
+    OpenNIFeed();
+    ~OpenNIFeed();
+    
+    virtual openni::Status setup( string deviceUri = "" );
+    virtual void update();
+    bool isFrameNew();
+    virtual void draw( int x, int y );
+    void close();
+    
+    virtual void start();
+    virtual void stop();
+    
+    void setUseTexture( bool bUseTexture = true );
+    
+    unsigned char*  getPixels();
+    ofPixels &      getPixelsRef();
+    unsigned char*  getDepthPixels();
+    
+    
+    unsigned short * getDepthPixelsRaw();
+    ofShortPixels & getDepthPixelsRawRef();
+    
+    int getWidth();
+    int getHeight();
+    
+    /// get the distance in millimeters to a given point as a float array
+    float* getDistancePixels();
+    
+    /// get the grayscale depth texture
+    ofTexture& getDepthTextureReference();
+    
+    openni::Device & getDevice();
+    vector< openni::DeviceInfo > enumerateDevices();
+    
+protected:
+    virtual void threadedFunction();
+    
+    void updatePixels( openni::VideoFrameRef & frameRef );
+    
+    openni::VideoStream         depth;
+    openni::VideoFrameRef		depthFrame;
+    
+    ofTexture                   tex;
+    
+    unsigned int                width;
+    unsigned int                height;
+    
+    bool                        bUseTexture;
+    
+    openni::Device              m_device;
+    
+    ofShortPixels               depthPixelsRaw;
+    ofPixels                    depthPixels;
+};
+
+
+
