@@ -8,7 +8,7 @@
 
 #pragma once
 #include "ofMain.h"
-#include "OpenNIFeed.h"
+#include "ofxOpenNIFeed.h"
 
 #include "NiTE.h"
 
@@ -48,11 +48,13 @@ namespace ofxNITE {
     
 }
 
-class ofxNiteHandTracker : public OpenNIFeed, public nite::HandTracker::NewFrameListener
+class ofxNiteHandTracker : public ofxOpenNIFeed, public nite::HandTracker::NewFrameListener
 {
 public:
     ofxNiteHandTracker();
     ~ofxNiteHandTracker();
+    
+    typedef map<int,ofPoint>::iterator handIterator;
     
     openni::Status setup( string deviceUri = "" );
     void draw( int x, int y);

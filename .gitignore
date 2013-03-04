@@ -1,0 +1,4 @@
+#OS X noise
+*.app
+*.xcworkspace
+xcuserdata

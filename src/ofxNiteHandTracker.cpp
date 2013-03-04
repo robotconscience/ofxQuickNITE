@@ -72,7 +72,7 @@ ofxNiteHandTracker::~ofxNiteHandTracker(){
 //--------------------------------------------------------------
 openni::Status ofxNiteHandTracker::setup( string deviceUri ){
     // setup device
-    openni::Status rc = OpenNIFeed::setup(deviceUri);
+    openni::Status rc = ofxOpenNIFeed::setup(deviceUri);
     if ( rc != openni::STATUS_OK ){
         return openni::STATUS_ERROR;
     }
@@ -110,13 +110,13 @@ void ofxNiteHandTracker::close(){
             delete m_pHandTracker;
             m_pHandTracker = NULL;
         }
-        OpenNIFeed::close();
+        ofxOpenNIFeed::close();
     }
 }
 
 //--------------------------------------------------------------
 void ofxNiteHandTracker::draw( int x, int y){
-    OpenNIFeed::draw(x,y);
+    ofxOpenNIFeed::draw(x,y);
     
     ofPushMatrix();
     ofTranslate(x,y);
