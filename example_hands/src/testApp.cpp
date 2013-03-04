@@ -4,6 +4,9 @@
 void testApp::setup(){
     handTracker.setup();
     handTracker.start();
+    
+    ofAddListener(handTracker.calibrationStarted, this, &testApp::onCalibrationStarted);
+    ofAddListener(handTracker.calibrationComplete, this, &testApp::onCalibrationComplete);
 }
 
 //--------------------------------------------------------------
@@ -34,14 +37,20 @@ void testApp::draw(){
 }
 
 //--------------------------------------------------------------
-void testApp::keyPressed(int key){
-
+void testApp::onCalibrationStarted( ofxNiteCalibrationEvent & e ){
+    cout << "calibration started!" << endl;
 }
 
 //--------------------------------------------------------------
-void testApp::keyReleased(int key){
-
+void testApp::onCalibrationComplete( ofxNiteCalibrationEvent & e ){
+    cout << "calibration complete!" << endl;
 }
+
+//--------------------------------------------------------------
+void testApp::keyPressed(int key){}
+
+//--------------------------------------------------------------
+void testApp::keyReleased(int key){}
 
 //--------------------------------------------------------------
 void testApp::mouseMoved(int x, int y ){

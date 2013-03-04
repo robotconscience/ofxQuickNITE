@@ -48,7 +48,22 @@ namespace ofxNITE {
     
 }
 
-class ofxNiteHandTracker : public ofxOpenNIFeed, public nite::HandTracker::NewFrameListener
+class ofxNiteCalibrationEvent
+{
+public:
+    ofPoint             position;
+    nite::GestureType   type;
+};
+
+class ofxNiteHandEvent
+{
+public:
+    ofPoint position;
+    ofPoint velocity;
+    int     id;
+};
+
+class ofxNiteHandTracker : public ofxOpenNIFeed //, public nite::HandTracker::NewFrameListener
 {
 public:
     ofxNiteHandTracker();
@@ -60,8 +75,20 @@ public:
     void draw( int x, int y);
     void close();
     
+    // events
+    ofEvent<ofxNiteCalibrationEvent> calibrationStarted;
+    ofEvent<ofxNiteCalibrationEvent> calibrationComplete;
+    ofEvent<ofxNiteHandEvent> handMoved;
+    ofEvent<ofxNiteHandEvent> handLost;
+    
     // smoothing 0 = none
     void setSmoothing( float smoothing = 0.0 );
+    
+    // set start gesture
+    void setStartGesture( nite::GestureType type );
+    
+    // get low-level tracker
+    nite::HandTracker* getTracker();
     
     map<int, ofPoint> getHands();
     map<int, ofPoint> getRawHands();
@@ -74,19 +101,19 @@ public:
     void start();
     void stop();
     
-    void onNewFrame( nite::HandTracker& tracker);
+//    void onNewFrame( nite::HandTracker& tracker);
     
-    bool canProcess(){
-        return bCanProcess;
-    }
+//    bool canProcess();
     
 protected:
     void threadedFunction();
     
 private:
+    nite::GestureType           startGesture;
     bool bCanProcess;
     map<int,vector<ofPoint> >   worldSpacePoints;
     map<int,vector<ofPoint> >   screenSpacePoints;
+    map<int, ofPoint>           inProgressHands;
     map<int, ofPoint>           currentHands;
     map<int, ofPoint>           currentRawHands;
     int                         historySize;

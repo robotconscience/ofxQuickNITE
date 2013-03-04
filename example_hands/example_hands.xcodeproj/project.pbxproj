@@ -576,8 +576,8 @@
 					"../../../addons/ofxQuickNITE/libs/libusb/lib/osx/libusb-1.0.a",
 					../../../addons/ofxQuickNITE/libs/nite/lib/osx/libNiTE2.dylib,
 					../../../addons/ofxQuickNITE/libs/openni/lib/osx/libOpenNI2.dylib,
-					../../../addons/ofxQuickNITE/libs/openni/lib/osx/OpenNI2/Drivers/libOniFile.dylib,
-					../../../addons/ofxQuickNITE/libs/openni/lib/osx/OpenNI2/Drivers/libPS1080.dylib,
+					../../../addons/ofxQuickNITE/libs/openni/drivers/OpenNI2/Drivers/libOniFile.dylib,
+					../../../addons/ofxQuickNITE/libs/openni/drivers/OpenNI2/Drivers/libPS1080.dylib,
 				);
 				SDKROOT = macosx;
 			};
@@ -640,8 +640,8 @@
 					"../../../addons/ofxQuickNITE/libs/libusb/lib/osx/libusb-1.0.a",
 					../../../addons/ofxQuickNITE/libs/nite/lib/osx/libNiTE2.dylib,
 					../../../addons/ofxQuickNITE/libs/openni/lib/osx/libOpenNI2.dylib,
-					../../../addons/ofxQuickNITE/libs/openni/lib/osx/OpenNI2/Drivers/libOniFile.dylib,
-					../../../addons/ofxQuickNITE/libs/openni/lib/osx/OpenNI2/Drivers/libPS1080.dylib,
+					../../../addons/ofxQuickNITE/libs/openni/drivers/OpenNI2/Drivers/libOniFile.dylib,
+					../../../addons/ofxQuickNITE/libs/openni/drivers/OpenNI2/Drivers/libPS1080.dylib,
 				);
 				SDKROOT = macosx;
 			};

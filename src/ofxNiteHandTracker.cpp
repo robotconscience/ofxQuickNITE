@@ -48,7 +48,7 @@ namespace ofxNITE {
     void NiteQueue_::threadedFunction(){
         while( isThreadRunning() ){
             for (int i=0; i<trackers.size(); i++){
-                if ( trackers[i]->canProcess()) trackers[i]->process();
+                trackers[i]->process();
 //                sleep(10);
             }
             yield();
@@ -62,6 +62,7 @@ ofxNiteHandTracker::ofxNiteHandTracker(){
     bOpen = false;
     m_pHandTracker = NULL;
     bCanProcess = false;
+    startGesture = nite::GESTURE_WAVE;
 }
 
 //--------------------------------------------------------------
@@ -84,8 +85,7 @@ openni::Status ofxNiteHandTracker::setup( string deviceUri ){
         return openni::STATUS_ERROR;
     }
     
-    m_pHandTracker->startGestureDetection(nite::GESTURE_WAVE);
-    m_pHandTracker->startGestureDetection(nite::GESTURE_CLICK);
+    m_pHandTracker->startGestureDetection(startGesture);
     
     cameraWidth = getWidth();
     cameraHeight = getHeight();
@@ -97,7 +97,8 @@ openni::Status ofxNiteHandTracker::setup( string deviceUri ){
     }
     
     bOpen = true;
-    m_pHandTracker->addNewFrameListener(this);
+//    if we want to use the nite thread. maybe this is a good idea?
+//    m_pHandTracker->addNewFrameListener(this);
 }
 
 //--------------------------------------------------------------
@@ -168,25 +169,36 @@ void ofxNiteHandTracker::process(){
         updatePixels( depthFrame );
     }
     
+    // get current gestures
     const nite::Array<nite::GestureData>& gestures = handFrame.getGestures();
     for (int i = 0; i < gestures.getSize(); ++i)
     {
+        ofxNiteCalibrationEvent args;
+        const nite::Point3f& position = gestures[i].getCurrentPosition();
+        m_pHandTracker->convertHandCoordinatesToDepth(position.x, position.y, position.z, &args.position.x, &args.position.y);
+        args.type = gestures[i].getType();
+        
         if (gestures[i].isComplete())
         {
-            const nite::Point3f& position = gestures[i].getCurrentPosition();
-//            printf("Gesture %d at (%f,%f,%f)\n", gestures[i].getType(), position.x, position.y, position.z);
-            
+            ofNotifyEvent(calibrationComplete, args, this);
             nite::HandId newId;
-            m_pHandTracker->startHandTracking(gestures[i].getCurrentPosition(), &newId);
+            m_pHandTracker->startHandTracking(position, &newId);
+            
+        // NOTE: this doesn't work yet with OpenNI...
+        // not complete + not in progress = new
+        } else if (gestures[i].isInProgress() && !gestures[i].isComplete()){
+            ofNotifyEvent(calibrationStarted, args, this);
         }
     }
     
+    // update current hands
     const nite::Array<nite::HandData>& hands= handFrame.getHands();
     for (int i = 0; i < hands.getSize(); ++i)
     {
         const nite::HandData& user = hands[i];
         
         if (!user.isTracking())
+//        if (user.isLost())
         {
             nite::HandId id = user.getId();
             lock();
@@ -194,12 +206,9 @@ void ofxNiteHandTracker::process(){
             screenSpacePoints.erase(id);
             currentHands.erase(id);
             unlock();
-        }
-        else
-        {
+        } else {
             lock();
-            if (user.isNew())
-            {
+            if (user.isNew()){
                 worldSpacePoints[user.getId()] = vector<ofPoint>();
             }
             // Add to worldSpacePoints
@@ -217,6 +226,14 @@ void ofxNiteHandTracker::process(){
             // add to current hand vector
             currentHands[user.getId()] = converted;
             currentRawHands[user.getId()] = worldSpacePoints[user.getId()].back();
+            
+            ofxNiteHandEvent args;
+            args.position   = converted;
+            args.id         = user.getId();
+            if ( screenSpacePoints.size() > 1 ){
+                args.velocity   = args.position - screenSpacePoints[user.getId()][screenSpacePoints.size()-1];
+            }
+            ofNotifyEvent(handMoved, args, this);
             
             unlock();
         }
@@ -242,6 +259,21 @@ void ofxNiteHandTracker::setSmoothing( float smoothing ){
 }
 
 //--------------------------------------------------------------
+void ofxNiteHandTracker::setStartGesture( nite::GestureType type ){
+    if ( m_pHandTracker != NULL && type != startGesture ){
+        m_pHandTracker->stopGestureDetection(startGesture);
+        m_pHandTracker->startGestureDetection(type);
+    }
+    startGesture = type;
+}
+
+//--------------------------------------------------------------
+nite::HandTracker* ofxNiteHandTracker::getTracker(){
+    
+}
+
+
+//--------------------------------------------------------------
 map<int, ofPoint> ofxNiteHandTracker::getHands(){
     return currentHands;
 }
@@ -252,9 +284,9 @@ map<int, ofPoint> ofxNiteHandTracker::getRawHands(){
 }
 
 //--------------------------------------------------------------
-void ofxNiteHandTracker::onNewFrame( nite::HandTracker& tracker){
-    bCanProcess = true;
-}
+//void ofxNiteHandTracker::onNewFrame( nite::HandTracker& tracker){
+//    bCanProcess = true;
+//}
 
 //--------------------------------------------------------------
 ofPoint ofxNiteHandTracker::getRawHand( int id ){

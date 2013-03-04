@@ -21,5 +21,8 @@ class testApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
     
         ofxNiteHandTracker handTracker;
+    
+        void onCalibrationStarted( ofxNiteCalibrationEvent & e );
+        void onCalibrationComplete( ofxNiteCalibrationEvent & e );
 		
 };
