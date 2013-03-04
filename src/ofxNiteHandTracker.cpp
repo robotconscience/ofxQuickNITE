@@ -62,7 +62,7 @@ ofxNiteHandTracker::ofxNiteHandTracker(){
     bOpen = false;
     m_pHandTracker = NULL;
     bCanProcess = false;
-    startGesture = nite::GESTURE_WAVE;
+    addStartGesture( nite::GESTURE_WAVE );
 }
 
 //--------------------------------------------------------------
@@ -85,7 +85,9 @@ openni::Status ofxNiteHandTracker::setup( string deviceUri ){
         return openni::STATUS_ERROR;
     }
     
-    m_pHandTracker->startGestureDetection(startGesture);
+    for (int i=0; i<trackingGestures.size(); i++){
+        m_pHandTracker->startGestureDetection(trackingGestures[i]);
+    }
     
     cameraWidth = getWidth();
     cameraHeight = getHeight();
@@ -259,12 +261,31 @@ void ofxNiteHandTracker::setSmoothing( float smoothing ){
 }
 
 //--------------------------------------------------------------
-void ofxNiteHandTracker::setStartGesture( nite::GestureType type ){
-    if ( m_pHandTracker != NULL && type != startGesture ){
-        m_pHandTracker->stopGestureDetection(startGesture);
+void ofxNiteHandTracker::addStartGesture( nite::GestureType type ){
+    // are we already tracking this gesture?
+    for (int i=0; i<trackingGestures.size(); i++){
+        if ( trackingGestures[i] == type ) return;
+    }
+    
+    trackingGestures.push_back(type);
+    
+    if ( m_pHandTracker != NULL ){
         m_pHandTracker->startGestureDetection(type);
     }
-    startGesture = type;
+}
+
+//--------------------------------------------------------------
+void ofxNiteHandTracker::removeStartGesture( nite::GestureType type ){
+    for (int i=0; i<trackingGestures.size(); i++){
+        if ( trackingGestures[i] == type ){
+            trackingGestures.erase( trackingGestures.begin() + i );
+            break;
+        }
+    }
+    
+    if ( m_pHandTracker != NULL ){
+        m_pHandTracker->stopGestureDetection(type);
+    }
 }
 
 //--------------------------------------------------------------

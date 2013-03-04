@@ -84,8 +84,12 @@ public:
     // smoothing 0 = none
     void setSmoothing( float smoothing = 0.0 );
     
-    // set start gesture
-    void setStartGesture( nite::GestureType type );
+    // add start gesture(s)
+    // starts tracking immediately if tracker is already started
+    void addStartGesture( nite::GestureType type );
+    
+    // remove start gesture
+    void removeStartGesture( nite::GestureType type );
     
     // get low-level tracker
     nite::HandTracker* getTracker();
@@ -109,7 +113,7 @@ protected:
     void threadedFunction();
     
 private:
-    nite::GestureType           startGesture;
+    vector<nite::GestureType>   trackingGestures;
     bool bCanProcess;
     map<int,vector<ofPoint> >   worldSpacePoints;
     map<int,vector<ofPoint> >   screenSpacePoints;
