@@ -25,6 +25,7 @@ namespace ofxNITE {
         for (int i=0; i<trackers.size(); i++){
             if ( trackers[i] == &handTracker ){
                 trackers.erase( trackers.begin() + i );
+                unlock();
                 return;
             }
         }
@@ -49,9 +50,8 @@ namespace ofxNITE {
         while( isThreadRunning() ){
             for (int i=0; i<trackers.size(); i++){
                 trackers[i]->process();
-//                sleep(10);
+                sleep(1);
             }
-            yield();
         }
     }
 };
@@ -108,12 +108,13 @@ void ofxNiteHandTracker::close(){
     if ( bOpen ){
         bOpen = false;
         stop();
-        ofxNITE::shutDownNite();
+        m_pHandTracker->destroy();
         if ( m_pHandTracker != NULL ){
             delete m_pHandTracker;
             m_pHandTracker = NULL;
         }
         ofxOpenNIFeed::close();
+        ofxNITE::shutDownNite();
     }
 }
 
@@ -146,16 +147,17 @@ void ofxNiteHandTracker::draw( int x, int y){
 void ofxNiteHandTracker::threadedFunction(){
     while ( isThreadRunning() ){
         process();
-        sleep(10);
+        yield();
     }
 }
 
 //--------------------------------------------------------------
 void ofxNiteHandTracker::process(){
+    if ( !bOpen || m_pHandTracker == NULL || !m_pHandTracker->isValid() ) return;
+    
     bCanProcess = false;
     nite::HandTrackerFrameRef handFrame;
     openni::VideoFrameRef depthFrame;
-    if ( !m_pHandTracker->isValid() ) return;
     
     nite::Status rc = m_pHandTracker->readFrame(&handFrame);
     
@@ -251,7 +253,6 @@ void ofxNiteHandTracker::start(){
 
 //--------------------------------------------------------------
 void ofxNiteHandTracker::stop(){
-    ofxNITE::niteQueue().waitForThread();
     ofxNITE::niteQueue().removeTracker(*this);
 }
 
@@ -276,12 +277,16 @@ void ofxNiteHandTracker::addStartGesture( nite::GestureType type ){
 
 //--------------------------------------------------------------
 void ofxNiteHandTracker::removeStartGesture( nite::GestureType type ){
+    bool bFound = false;
     for (int i=0; i<trackingGestures.size(); i++){
         if ( trackingGestures[i] == type ){
             trackingGestures.erase( trackingGestures.begin() + i );
+            bFound = true;
             break;
         }
     }
+    
+    if (!bFound) return;
     
     if ( m_pHandTracker != NULL ){
         m_pHandTracker->stopGestureDetection(type);

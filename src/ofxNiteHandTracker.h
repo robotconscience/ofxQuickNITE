@@ -40,8 +40,9 @@ namespace ofxNITE {
     // there must be a better place to clear this queue?
     static void shutDownNite(){
         if ( ofxNITE::niteInitialized ){
-            niteQueue().clear();
             nite::NiTE::shutdown();
+            niteQueue().waitForThread(true);
+            niteQueue().clear();
             ofxNITE::niteInitialized = false;
         }
     }
