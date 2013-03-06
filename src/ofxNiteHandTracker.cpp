@@ -205,6 +205,11 @@ void ofxNiteHandTracker::process(){
 //        if (user.isLost())
         {
             nite::HandId id = user.getId();
+            
+            ofxNiteHandEvent args;
+            args.id         = id;
+            ofNotifyEvent(handLost, args, this);
+            
             lock();
             worldSpacePoints.erase(id);
             screenSpacePoints.erase(id);
