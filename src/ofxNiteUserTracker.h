@@ -68,17 +68,24 @@ class ofxNiteUser
 {
 public:
     ofxNiteUser();
-
+    
+    void updateTexture();
     void update( ofxNiteUserTracker & tracker, const nite::UserData& user, uint64_t ts );
     void draw();
     
     bool                isVisible();
     bool                hasSkeleton();
     
+    ofPixelsRef         getUserPixelsRef();
+    unsigned char *     getUserPixels();
+    ofTexture           getTexture();
+    
     ofxNiteSkeleton     getSkeleton();
     
     nite::Skeleton      getNiteSkeleton();
     nite::SkeletonState getNiteSkeletonState();
+    
+    void setFromPixels( ofPixels & pix );
     
 private:
     ofPixels    pixels;
@@ -101,6 +108,7 @@ public:
     ~ofxNiteUserTracker();
     
     openni::Status setup( string deviceUri = "" );
+    void update();
     void draw( int x, int y);
     void close();
     
@@ -110,6 +118,7 @@ public:
     
     // hm... should this be a reference?
     map<int, ofxNiteUser> getUsers();
+    typedef map<int, ofxNiteUser>::iterator iterator;
     
     nite::UserTracker* getTracker();
     
@@ -119,7 +128,8 @@ protected:
 	nite::UserId m_poseUser;
 	uint64_t m_poseTime;
     
-    map<int, ofxNiteUser> current_users;
+    map<int, ofxNiteUser>   current_users;
+    vector<int>             toDelete;
     
     bool bOpen;
     

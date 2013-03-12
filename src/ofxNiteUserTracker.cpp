@@ -59,6 +59,10 @@ void ofxNiteSkeleton::update( ofxNiteUserTracker & tracker, nite::Skeleton skele
     limbs[ L_KNEE_FOOT ].update(tracker, skeleton.getJoint(nite::JOINT_LEFT_KNEE), skeleton.getJoint(nite::JOINT_LEFT_FOOT));
     limbs[ R_HIP_KNEE ].update(tracker, skeleton.getJoint(nite::JOINT_RIGHT_HIP), skeleton.getJoint(nite::JOINT_RIGHT_KNEE));
     limbs[ R_KNEE_FOOT ].update(tracker, skeleton.getJoint(nite::JOINT_RIGHT_KNEE), skeleton.getJoint(nite::JOINT_RIGHT_FOOT));
+    
+    for (limbIterator it = limbs.begin(); it != limbs.end(); it++){
+        addVertices( it->second );
+    }
 }
 
 //--------------------------------------------------------------
@@ -75,10 +79,20 @@ void ofxNiteSkeleton::addVertices( ofxNiteLimb limb ){
 ofxNiteUser::ofxNiteUser(){
     bHasSkeleton    = false;
     bIsVisible      = false;
+    pixels.allocate(320, 240, 4);
+}
+
+//--------------------------------------------------------------
+void ofxNiteUser::updateTexture(){
+    if ( !tex.bAllocated()){
+        tex.allocate( pixels.getWidth(), pixels.getHeight(), GL_RGBA);
+    }
+    tex.loadData(pixels);
 }
 
 //--------------------------------------------------------------
 void ofxNiteUser::update( ofxNiteUserTracker & tracker, const nite::UserData& user, uint64_t ts ){
+    
     bIsVisible = user.isVisible();
     niteSkeleton = user.getSkeleton();
     skeleton.clear();
@@ -108,7 +122,11 @@ void ofxNiteUser::update( ofxNiteUserTracker & tracker, const nite::UserData& us
 
 //--------------------------------------------------------------
 void ofxNiteUser::draw(){
-    skeleton.draw();
+    ofEnableAlphaBlending();
+    tex.draw(0,0);
+    if ( bHasSkeleton ){
+        skeleton.draw();
+    }
 }
 
 //--------------------------------------------------------------
@@ -125,7 +143,26 @@ nite::Skeleton ofxNiteUser::getNiteSkeleton(){
 nite::SkeletonState ofxNiteUser::getNiteSkeletonState(){
     return niteSkeleton.getState();
 }
-    
+
+//--------------------------------------------------------------
+ofPixelsRef ofxNiteUser::getUserPixelsRef(){
+    return pixels;
+}
+
+//--------------------------------------------------------------
+unsigned char * ofxNiteUser::getUserPixels(){
+    return pixels.getPixels();
+}
+
+ofTexture ofxNiteUser::getTexture(){
+    return tex;
+}
+
+//--------------------------------------------------------------
+bool ofxNiteUser::hasSkeleton(){
+    return bHasSkeleton;
+}
+
 //--------------------------------------------------------------
 bool ofxNiteUser::isVisible(){
     return bIsVisible;
@@ -134,6 +171,11 @@ bool ofxNiteUser::isVisible(){
 //--------------------------------------------------------------
 void ofxNiteUser::updatePoints(){
     
+}
+
+//--------------------------------------------------------------
+void ofxNiteUser::setFromPixels( ofPixels & pix ){
+    pixels = pix;
 }
 
 #pragma mark ofxNiteUserTracker
@@ -177,10 +219,26 @@ openni::Status ofxNiteUserTracker::setup( string deviceUri ){
 }
 
 //--------------------------------------------------------------
+void ofxNiteUserTracker::update(){
+    ofxOpenNIFeed::update();
+    
+    ofxNITE::niteQueue().lock();
+    for (int i=0; i<toDelete.size(); i++){
+        current_users.erase(toDelete[i]);
+    }
+    ofxNITE::niteQueue().unlock();
+    toDelete.clear();
+    
+    for (map<int, ofxNiteUser>::iterator it = current_users.begin(); it != current_users.end(); ++it){
+        it->second.updateTexture();
+    }
+}
+
+//--------------------------------------------------------------
 void ofxNiteUserTracker::draw( int x, int y){
     ofPushMatrix();{
         ofTranslate(x, y);
-        ofxOpenNIFeed::draw(0,0);
+//        ofxOpenNIFeed::draw(0,0);
         for (map<int, ofxNiteUser>::iterator it = current_users.begin(); it != current_users.end(); ++it){
             it->second.draw();
         }
@@ -233,6 +291,31 @@ void ofxNiteUserTracker::process(){
     
     // current user pixels
 	const nite::UserMap& userLabels = userTrackerFrame.getUserMap();
+    const nite::UserId * userPixels = userLabels.getPixels();
+    
+    static map<int,ofPixels> pix;
+    pix.clear();
+    
+    for (map<int, ofxNiteUser>::iterator it = current_users.begin(); it != current_users.end(); it++){
+        pix[it->first].allocate(depthFrame.getWidth(), depthFrame.getHeight(), 4);
+    }
+    
+    for (int y = 0; y < depthFrame.getHeight(); ++y)
+    {
+        for (int x = 0; x < depthFrame.getWidth(); ++x, ++userPixels)
+        {
+            for (map<int, ofxNiteUser>::iterator it = current_users.begin(); it != current_users.end(); it++){
+                pix[it->first][(x + y * depthFrame.getWidth())*4] = *userPixels == 0 ? 0 : ( *userPixels == it->first ? 255 : 0);
+                pix[it->first][(x + y * depthFrame.getWidth())*4 + 1] = *userPixels == 0 ? 0 : ( *userPixels == it->first ? 255 : 0);
+                pix[it->first][(x + y * depthFrame.getWidth())*4 + 2] = *userPixels == 0 ? 0 : ( *userPixels == it->first ? 255 : 0);
+                pix[it->first][(x + y * depthFrame.getWidth())*4 + 3] = *userPixels == 0 ? 0 : ( *userPixels == it->first ? 255 : 0);
+            }
+        }
+    }
+    
+    for (map<int, ofxNiteUser>::iterator it = current_users.begin(); it != current_users.end(); ++it){
+        it->second.setFromPixels(pix[it->first]);
+    }
     
     // current users
     const nite::Array<nite::UserData>& users = userTrackerFrame.getUsers();
@@ -250,7 +333,9 @@ void ofxNiteUserTracker::process(){
             
         } else if ( user.isLost() ){
             if ( current_users.count(id) > 0 ){
-                current_users.erase(id);
+                toDelete.push_back(id);
+                // can't erase here because of the 'ol textures-in-threads problem
+                //current_users.erase(id);
             }
         } else {
             current_users[id].update(*this, user, userTrackerFrame.getTimestamp());
@@ -269,5 +354,10 @@ bool ofxNiteUserTracker::isValid(){
 //--------------------------------------------------------------
 nite::UserTracker* ofxNiteUserTracker::getTracker(){
     return m_pUserTracker;
+}
+
+//--------------------------------------------------------------
+map<int, ofxNiteUser> ofxNiteUserTracker::getUsers(){
+    return current_users;
 }
 
