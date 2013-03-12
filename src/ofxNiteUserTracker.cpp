@@ -36,6 +36,15 @@ map<ofxNiteLimbType, ofxNiteLimb> & ofxNiteSkeleton::getLimbs(){
 }
 
 //--------------------------------------------------------------
+ofxNiteLimb ofxNiteSkeleton::getLimb( ofxNiteLimbType type ){
+    if ( limbs.count(type) > 0){
+        return  limbs[type];
+    } else {
+        return ofxNiteLimb();
+    }
+}
+
+//--------------------------------------------------------------
 void ofxNiteSkeleton::update( ofxNiteUserTracker & tracker, nite::Skeleton skeleton ){
     clear();
     setupIndicesAuto();
@@ -229,11 +238,11 @@ openni::Status ofxNiteUserTracker::setup( string deviceUri ){
 void ofxNiteUserTracker::update(){
     ofxOpenNIFeed::update();
     
-    ofxNITE::niteQueue().lock();
+    lock();
     for (int i=0; i<toDelete.size(); i++){
         current_users.erase(toDelete[i]);
     }
-    ofxNITE::niteQueue().unlock();
+    unlock();
     toDelete.clear();
     
     for (map<int, ofxNiteUser>::iterator it = current_users.begin(); it != current_users.end(); ++it){
@@ -272,8 +281,10 @@ void ofxNiteUserTracker::close(){
 //--------------------------------------------------------------
 void ofxNiteUserTracker::threadedFunction(){
     while (isThreadRunning() && isValid()){
+        lock();
         process();
-        sleep(5);
+        unlock();
+        sleep(10);
     }
 }
 
@@ -365,7 +376,7 @@ nite::UserTracker* ofxNiteUserTracker::getTracker(){
 }
 
 //--------------------------------------------------------------
-map<int, ofxNiteUser> & ofxNiteUserTracker::getUsers(){
-    return current_users;
+map<int, ofxNiteUser> * ofxNiteUserTracker::getUsers(){
+    return &current_users;
 }
 

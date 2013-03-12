@@ -20,23 +20,23 @@ void testApp::draw(){
     userTracker.draw(0,0);
     
     // you can get the current users like this:
-//    map<int, ofxNiteUser> users = userTracker.getUsers();
-//    ofxNiteUserTracker::iterator it = users.begin(); // same as saying map<int, ofxNiteUser>::iterator
-//    
-//    ofPushStyle();
-//    ofSetColor(0,255,0);
-//    ofSetLineWidth(5.0);
-//    
-//    for ( it; it != users.end(); it++){
-//        // do things with each user?
-//        // it->second is the user
-//        //it->second.hasSkeleton(); boolean
-//        //it->second.getUserPixelsRef(); user mask
-//        if ( it->second.hasSkeleton() ){
-//            ofxNiteSkeleton skeleton = it->second.getSkeleton(); //ofxNiteSkeleton (aka ofMesh)
-//            skeleton.getLimbs()[L_SHOULDER_ELBOW].draw();
-//        }
-//    }
+    map<int, ofxNiteUser> * users = userTracker.getUsers();
+    
+    
+    ofPushStyle();
+    ofSetColor(0,255,0);
+    ofSetLineWidth(5.0);
+    
+    for (map<int, ofxNiteUser>::iterator it = users->begin(); it != users->end(); it++){
+        // do things with each user?
+        // it->second is the user
+        //it->second.hasSkeleton(); boolean
+        //it->second.getUserPixelsRef(); user mask
+        if ( it->second.hasSkeleton() ){
+            ofxNiteSkeleton skeleton = it->second.getSkeleton(); //ofxNiteSkeleton (aka ofMesh)
+            skeleton.getLimb(L_SHOULDER_ELBOW).draw();
+        }
+    }
     
     ofPopStyle();
 }

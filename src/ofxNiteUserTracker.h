@@ -56,6 +56,7 @@ public:
     void update( ofxNiteUserTracker & tracker, nite::Skeleton skeleton );
     
     map<ofxNiteLimbType, ofxNiteLimb> & getLimbs();
+    ofxNiteLimb getLimb( ofxNiteLimbType type );
     typedef map<ofxNiteLimbType, ofxNiteLimb>::iterator limbIterator;
     
 protected:
@@ -119,7 +120,7 @@ public:
     bool isValid();
     
     // hm... should this be a reference?
-    map<int, ofxNiteUser> & getUsers();
+    map<int, ofxNiteUser> * getUsers();
     typedef map<int, ofxNiteUser>::iterator iterator;
     
     nite::UserTracker* getTracker();
