@@ -8,6 +8,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxNITE.h"
 #include <OpenNI.h>
 
 #define MAX_DEPTH 10000
@@ -16,7 +17,7 @@ namespace ofxOpenNI {
     static bool bInitialized = false;
 }
 
-class ofxOpenNIFeed : public ofBaseVideo, protected ofThread
+class ofxOpenNIFeed : public ofBaseVideo, public ofThread
 {
 public:
     
@@ -29,15 +30,11 @@ public:
     virtual void draw( int x, int y );
     void close();
     
-    virtual void start();
-    virtual void stop();
-    
     void setUseTexture( bool bUseTexture = true );
     
     unsigned char*  getPixels();
     ofPixels &      getPixelsRef();
     unsigned char*  getDepthPixels();
-    
     
     unsigned short * getDepthPixelsRaw();
     ofShortPixels & getDepthPixelsRawRef();

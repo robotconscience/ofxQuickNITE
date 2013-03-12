@@ -98,16 +98,6 @@ void ofxOpenNIFeed::draw( int x, int y ){
 }
 
 //--------------------------------------------------------------
-void ofxOpenNIFeed::start(){
-    startThread();
-}
-
-//--------------------------------------------------------------
-void ofxOpenNIFeed::stop(){
-    stopThread();
-}
-
-//--------------------------------------------------------------
 unsigned char* ofxOpenNIFeed::getDepthPixels(){
     return depthPixels.getPixels();
 }

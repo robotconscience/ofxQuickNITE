@@ -10,61 +10,9 @@
 #include "ofMain.h"
 #include "ofxOpenNIFeed.h"
 
-#include "NiTE.h"
+#include "ofxNITE.h"
 
-class ofxNiteHandTracker;
-
-namespace ofxNITE {
-    static bool niteInitialized = false;
-    
-    static vector<ofxNiteHandTracker *> trackers;
-    
-    class NiteQueue_ : public ofThread {
-    public:
-        
-        void addTracker( ofxNiteHandTracker & handTracker );
-        void removeTracker( ofxNiteHandTracker & handTracker );
-        void start();
-        void stop();
-        void clear();
-        
-    protected:
-        vector<ofxNiteHandTracker *> trackers;
-        
-        void threadedFunction();
-    };
-    
-    // queue singleton
-    NiteQueue_ & niteQueue();
-    
-    // there must be a better place to clear this queue?
-    static void shutDownNite(){
-        if ( ofxNITE::niteInitialized ){
-            nite::NiTE::shutdown();
-            niteQueue().waitForThread(true);
-            niteQueue().clear();
-            ofxNITE::niteInitialized = false;
-        }
-    }
-    
-}
-
-class ofxNiteCalibrationEvent
-{
-public:
-    ofPoint             position;
-    nite::GestureType   type;
-};
-
-class ofxNiteHandEvent
-{
-public:
-    ofPoint position;
-    ofPoint velocity;
-    int     id;
-};
-
-class ofxNiteHandTracker : public ofxOpenNIFeed //, public nite::HandTracker::NewFrameListener
+class ofxNiteHandTracker : public ofxOpenNIFeed, public ofxNiteProcess //, public nite::HandTracker::NewFrameListener
 {
 public:
     ofxNiteHandTracker();
@@ -102,9 +50,7 @@ public:
     
     // run NITE process
     void process();
-    
-    void start();
-    void stop();
+    bool isValid();
     
 //    void onNewFrame( nite::HandTracker& tracker);
     

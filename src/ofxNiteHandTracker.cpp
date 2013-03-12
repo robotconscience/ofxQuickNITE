@@ -8,54 +8,6 @@
 
 #include "ofxNiteHandTracker.h"
 
-namespace ofxNITE {
-    NiteQueue_ & niteQueue(){
-        static NiteQueue_ * niteQueue = new NiteQueue_;
-        return *niteQueue;
-    }
-    
-    void NiteQueue_::addTracker( ofxNiteHandTracker & handTracker ){
-        lock();
-        trackers.push_back(&handTracker);
-        unlock();
-    }
-    
-    void NiteQueue_::removeTracker( ofxNiteHandTracker & handTracker ){
-        lock();
-        for (int i=0; i<trackers.size(); i++){
-            if ( trackers[i] == &handTracker ){
-                trackers.erase( trackers.begin() + i );
-                unlock();
-                return;
-            }
-        }
-        unlock();
-        
-    }
-
-    void NiteQueue_::start(){
-        if ( isThreadRunning() ) return;
-        startThread();
-    }
-
-    void NiteQueue_::stop(){
-        stopThread();
-    }
-
-    void NiteQueue_::clear(){
-        trackers.clear();
-    }
-
-    void NiteQueue_::threadedFunction(){
-        while( isThreadRunning() ){
-            for (int i=0; i<trackers.size(); i++){
-                trackers[i]->process();
-                sleep(1);
-            }
-        }
-    }
-};
-
 //--------------------------------------------------------------
 ofxNiteHandTracker::ofxNiteHandTracker(){
     historySize = 20;
@@ -152,8 +104,14 @@ void ofxNiteHandTracker::threadedFunction(){
 }
 
 //--------------------------------------------------------------
+bool ofxNiteHandTracker::isValid(){
+    if ( !bOpen || m_pHandTracker == NULL || !m_pHandTracker->isValid() ) return false;
+    return true;
+}
+
+//--------------------------------------------------------------
 void ofxNiteHandTracker::process(){
-    if ( !bOpen || m_pHandTracker == NULL || !m_pHandTracker->isValid() ) return;
+    if (!isValid()) return;
     
     bCanProcess = false;
     nite::HandTrackerFrameRef handFrame;
@@ -242,18 +200,6 @@ void ofxNiteHandTracker::process(){
             unlock();
         }
     }
-}
-
-
-//--------------------------------------------------------------
-void ofxNiteHandTracker::start(){
-    ofxNITE::niteQueue().addTracker(*this);
-    ofxNITE::niteQueue().start();
-}
-
-//--------------------------------------------------------------
-void ofxNiteHandTracker::stop(){
-    ofxNITE::niteQueue().removeTracker(*this);
 }
 
 //--------------------------------------------------------------
