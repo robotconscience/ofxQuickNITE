@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void testApp::setup(){
     userTracker.setup();
-    userTracker.start();
+    userTracker.startThread();
 }
 
 //--------------------------------------------------------------
@@ -15,20 +15,30 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-    ofDrawBitmapString("Wave your hand to start hand tracking", 20,20);
     
-    userTracker.draw(20, 40);
+    ofSetColor(255);
+    userTracker.draw(0,0);
     
     // you can get the current users like this:
-    map<int, ofxNiteUser> users = userTracker.getUsers();
-    ofxNiteUserTracker::iterator it = users.begin(); // same as saying map<int, ofxNiteUser>::iterator
-    for ( it; it != users.end(); it++){
-        // do things with each user?
-        // it->second is the user
-        //it->second.hasSkeleton(); boolean
-        //it->second.getUserPixelsRef(); user mask
-        //it->second.getSkeleton() ofxNiteSkeleton (aka ofMesh)
-    }
+//    map<int, ofxNiteUser> users = userTracker.getUsers();
+//    ofxNiteUserTracker::iterator it = users.begin(); // same as saying map<int, ofxNiteUser>::iterator
+//    
+//    ofPushStyle();
+//    ofSetColor(0,255,0);
+//    ofSetLineWidth(5.0);
+//    
+//    for ( it; it != users.end(); it++){
+//        // do things with each user?
+//        // it->second is the user
+//        //it->second.hasSkeleton(); boolean
+//        //it->second.getUserPixelsRef(); user mask
+//        if ( it->second.hasSkeleton() ){
+//            ofxNiteSkeleton skeleton = it->second.getSkeleton(); //ofxNiteSkeleton (aka ofMesh)
+//            skeleton.getLimbs()[L_SHOULDER_ELBOW].draw();
+//        }
+//    }
+    
+    ofPopStyle();
 }
 
 //--------------------------------------------------------------

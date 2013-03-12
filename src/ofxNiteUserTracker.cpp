@@ -26,7 +26,12 @@ void ofxNiteLimb::update( ofxNiteUserTracker & tracker, const nite::SkeletonJoin
 #pragma mark ofxNiteSkeleton
 
 //--------------------------------------------------------------
-map<ofxNiteLimbType, ofxNiteLimb> ofxNiteSkeleton::getLimbs(){
+ofxNiteSkeleton::ofxNiteSkeleton(){
+    limbs[ HEAD_TO_NECK ].addVertex(ofPoint(0,0));
+}
+
+//--------------------------------------------------------------
+map<ofxNiteLimbType, ofxNiteLimb> & ofxNiteSkeleton::getLimbs(){
     return limbs;
 }
 
@@ -103,11 +108,13 @@ void ofxNiteUser::update( ofxNiteUserTracker & tracker, const nite::UserData& us
             break;
 		
         case nite::SKELETON_TRACKED:
+            bHasSkeleton = true;
             skeleton.update( tracker, niteSkeleton );
 			break;
             
 		case nite::SKELETON_CALIBRATING:
             ofLogVerbose()<<"Calibrating skeleton";
+            bHasSkeleton = false;
             break;
             
 		case nite::SKELETON_CALIBRATION_ERROR_NOT_IN_POSE:
@@ -264,8 +271,9 @@ void ofxNiteUserTracker::close(){
 
 //--------------------------------------------------------------
 void ofxNiteUserTracker::threadedFunction(){
-    while (isThreadRunning()){
+    while (isThreadRunning() && isValid()){
         process();
+        sleep(5);
     }
 }
 
@@ -306,8 +314,8 @@ void ofxNiteUserTracker::process(){
         {
             for (map<int, ofxNiteUser>::iterator it = current_users.begin(); it != current_users.end(); it++){
                 pix[it->first][(x + y * depthFrame.getWidth())*4] = *userPixels == 0 ? 0 : ( *userPixels == it->first ? 255 : 0);
-                pix[it->first][(x + y * depthFrame.getWidth())*4 + 1] = *userPixels == 0 ? 0 : ( *userPixels == it->first ? 255 : 0);
-                pix[it->first][(x + y * depthFrame.getWidth())*4 + 2] = *userPixels == 0 ? 0 : ( *userPixels == it->first ? 255 : 0);
+                pix[it->first][(x + y * depthFrame.getWidth())*4 + 1] = *userPixels == 0 ? 0 : ( *userPixels == it->first ? 0 : 0);
+                pix[it->first][(x + y * depthFrame.getWidth())*4 + 2] = *userPixels == 0 ? 0 : ( *userPixels == it->first ? 0 : 0);
                 pix[it->first][(x + y * depthFrame.getWidth())*4 + 3] = *userPixels == 0 ? 0 : ( *userPixels == it->first ? 255 : 0);
             }
         }
@@ -357,7 +365,7 @@ nite::UserTracker* ofxNiteUserTracker::getTracker(){
 }
 
 //--------------------------------------------------------------
-map<int, ofxNiteUser> ofxNiteUserTracker::getUsers(){
+map<int, ofxNiteUser> & ofxNiteUserTracker::getUsers(){
     return current_users;
 }
 
