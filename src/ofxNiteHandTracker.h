@@ -20,7 +20,7 @@ public:
     
     typedef map<int,ofPoint>::iterator handIterator;
     
-    openni::Status setup( string deviceUri = "" );
+    bool open( string deviceUri = "" );
     void draw( int x, int y);
     void close();
     
@@ -72,6 +72,6 @@ private:
     int cameraWidth, cameraHeight;
     nite::HandTracker* m_pHandTracker;
     
-    bool bOpen;
+    bool                        bOpen;
 };
 

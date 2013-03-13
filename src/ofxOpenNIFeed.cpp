@@ -64,9 +64,9 @@ openni::Status ofxOpenNIFeed::setup( string uri )
     height = depthVideoMode.getResolutionY();
     width = depthVideoMode.getResolutionX();
     
-    depthPixelsRaw.allocate(width, height, 1);
-    depthPixels.allocate(width, height, 1);
-    tex.allocate(width, height, GL_LUMINANCE);
+    if ( depthPixelsRaw.isAllocated() || depthPixelsRaw.getWidth() != width || depthPixelsRaw.getHeight() != height ) depthPixelsRaw.allocate(width, height, 1);
+    if ( depthPixels.isAllocated() || depthPixels.getWidth() != width || depthPixels.getHeight() != height ) depthPixels.allocate(width, height, 1);
+    if ( tex.isAllocated() || tex.getWidth() != width || tex.getHeight() != height ) tex.allocate(width, height, GL_LUMINANCE);
     return openni::STATUS_OK;
 }
 
@@ -79,7 +79,12 @@ void ofxOpenNIFeed::update(){
 
 //--------------------------------------------------------------
 void ofxOpenNIFeed::close(){
-    openni::OpenNI::shutdown();
+    if ( m_device.isValid() ){
+        m_device.close();
+        cout << "Shutdown device "<<endl;
+    }
+    if ( ofxOpenNI::bInitialized ) openni::OpenNI::shutdown();
+    ofxOpenNI::bInitialized = false;
 }
 
 //--------------------------------------------------------------

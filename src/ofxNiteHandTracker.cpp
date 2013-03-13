@@ -23,18 +23,20 @@ ofxNiteHandTracker::~ofxNiteHandTracker(){
 }
 
 //--------------------------------------------------------------
-openni::Status ofxNiteHandTracker::setup( string deviceUri ){
+bool ofxNiteHandTracker::open( string _deviceUri ){
+    cout <<"OPENING! "<<_deviceUri<<endl;
     // setup device
+    deviceUri = _deviceUri;
     openni::Status rc = ofxOpenNIFeed::setup(deviceUri);
     if ( rc != openni::STATUS_OK ){
-        return openni::STATUS_ERROR;
+        return false;
     }
     
     m_pHandTracker = new nite::HandTracker;
     
     if (m_pHandTracker->create( &m_device ) != nite::STATUS_OK)
     {
-        return openni::STATUS_ERROR;
+        return false;
     }
     
     for (int i=0; i<trackingGestures.size(); i++){
@@ -53,13 +55,15 @@ openni::Status ofxNiteHandTracker::setup( string deviceUri ){
     bOpen = true;
 //    if we want to use the nite thread. maybe this is a good idea?
 //    m_pHandTracker->addNewFrameListener(this);
+    return true;
 }
 
 //--------------------------------------------------------------
 void ofxNiteHandTracker::close(){
+    cout <<"CLOSE"<<endl;
     if ( bOpen ){
         bOpen = false;
-        stop();
+        //stop();
         m_pHandTracker->destroy();
         if ( m_pHandTracker != NULL ){
             delete m_pHandTracker;

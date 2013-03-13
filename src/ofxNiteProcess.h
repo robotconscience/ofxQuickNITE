@@ -6,6 +6,8 @@
 
 #pragma once
 
+#include "ofMain.h"
+
 class ofxNiteProcess
 {
 public:
@@ -13,7 +15,17 @@ public:
     virtual bool    isValid() = 0;
     virtual void    process() = 0;
     
+    virtual bool open( string deviceUri = "" ) = 0;
+    virtual void close() = 0;
+    
     virtual void start();
     virtual void stop();
+    
+    virtual string getURI(){
+        return deviceUri;
+    }
+    
+protected:
+    string deviceUri;
 };
 

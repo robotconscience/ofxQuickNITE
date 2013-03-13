@@ -110,7 +110,7 @@ public:
     ofxNiteUserTracker();
     ~ofxNiteUserTracker();
     
-    openni::Status setup( string deviceUri = "" );
+    bool open( string deviceUri = "" );
     void update();
     void draw( int x, int y);
     void close();

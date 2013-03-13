@@ -209,11 +209,11 @@ ofxNiteUserTracker::~ofxNiteUserTracker(){
 }
 
 //--------------------------------------------------------------
-openni::Status ofxNiteUserTracker::setup( string deviceUri ){
+bool ofxNiteUserTracker::open( string deviceUri ){
     // setup device
     openni::Status rc = ofxOpenNIFeed::setup(deviceUri);
     if ( rc != openni::STATUS_OK ){
-        return openni::STATUS_ERROR;
+        return false;
     }
     
     // init nite
@@ -227,11 +227,11 @@ openni::Status ofxNiteUserTracker::setup( string deviceUri ){
 	m_pUserTracker = new nite::UserTracker;
     
     if (m_pUserTracker->create(&m_device) != nite::STATUS_OK){
-        cout << "ERRROR"<<endl;
-		return openni::STATUS_ERROR;
+		return false;
 	}
     
     bOpen = true;
+    return true;
 }
 
 //--------------------------------------------------------------
