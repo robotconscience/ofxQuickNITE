@@ -81,7 +81,6 @@ void ofxOpenNIFeed::update(){
 void ofxOpenNIFeed::close(){
     if ( m_device.isValid() ){
         m_device.close();
-        cout << "Shutdown device "<<endl;
     }
     if ( ofxOpenNI::bInitialized ) openni::OpenNI::shutdown();
     ofxOpenNI::bInitialized = false;

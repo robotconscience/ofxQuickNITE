@@ -24,7 +24,6 @@ ofxNiteHandTracker::~ofxNiteHandTracker(){
 
 //--------------------------------------------------------------
 bool ofxNiteHandTracker::open( string _deviceUri ){
-    cout <<"OPENING! "<<_deviceUri<<endl;
     // setup device
     deviceUri = _deviceUri;
     openni::Status rc = ofxOpenNIFeed::setup(deviceUri);
@@ -60,7 +59,6 @@ bool ofxNiteHandTracker::open( string _deviceUri ){
 
 //--------------------------------------------------------------
 void ofxNiteHandTracker::close(){
-    cout <<"CLOSE"<<endl;
     if ( bOpen ){
         bOpen = false;
         //stop();
