@@ -218,7 +218,6 @@ bool ofxNiteUserTracker::open( string deviceUri ){
     
     // init nite
     if (! ofxNITE::niteInitialized ){
-        cout <<"INIT"<<endl;
         nite::NiTE::initialize();
         ofxNITE::niteInitialized = true;
     }
