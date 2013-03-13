@@ -33,6 +33,10 @@ namespace ofxNITE {
         
     }
     
+    vector<ofxNiteProcess *> & NiteQueue_::getTrackers(){
+        return trackers;
+    }
+    
     void NiteQueue_::start(){
         if ( isThreadRunning() ) return;
         startThread();

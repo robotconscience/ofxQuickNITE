@@ -28,6 +28,8 @@ namespace ofxNITE {
         void stop();
         void clear();
         
+        vector<ofxNiteProcess *> & getTrackers();
+        
     protected:
         vector<ofxNiteProcess *> trackers;
         
@@ -41,8 +43,11 @@ namespace ofxNITE {
     static void shutDownNite(){
         if ( ofxNITE::niteInitialized ){
             nite::NiTE::shutdown();
-            niteQueue().waitForThread(true);
-            niteQueue().clear();
+            if ( niteQueue().isThreadRunning() && Poco::Thread::current() != &niteQueue().getPocoThread() ){
+                niteQueue().waitForThread(true);
+                niteQueue().clear();
+                cout << "Cleared nite queue "<<endl;
+            }
             ofxNITE::niteInitialized = false;
         }
     }
