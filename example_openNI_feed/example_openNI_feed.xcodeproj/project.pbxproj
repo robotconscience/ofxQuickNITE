@@ -1,0 +1,879 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0e64790a2caf7ef5cb7614df78dd30a9 /* ofxNiteProcess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7b2e8b9587bf845ca50d71e95b09b337 /* ofxNiteProcess.cpp */; };
+		30cd1cab70fef1139e2018942c503c38 /* ofxNITE.cpp in Sources */ = {isa = PBXBuildFile; fileRef = d6edfb01e063bdc746e0deb9d3992a66 /* ofxNITE.cpp */; };
+		33305ffddba2319a8d02bf5dfe3d4989 /* ofxNiteHandTracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9ac645529c5626ef667d6dc411819c2a /* ofxNiteHandTracker.cpp */; };
+		A9725E361707216500C1DB31 /* libusb-1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A9725E341707216500C1DB31 /* libusb-1.0.0.dylib */; };
+		A9725E371707216500C1DB31 /* libusb-1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A9725E351707216500C1DB31 /* libusb-1.0.a */; };
+		A9725E391707216D00C1DB31 /* libNiTE2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A9725E381707216D00C1DB31 /* libNiTE2.dylib */; };
+		A9725E3B1707217600C1DB31 /* libOpenNI2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A9725E3A1707217600C1DB31 /* libOpenNI2.dylib */; };
+		A9725E3F1707219300C1DB31 /* OpenNI.ini in CopyFiles */ = {isa = PBXBuildFile; fileRef = A9725E3C1707218500C1DB31 /* OpenNI.ini */; };
+		A9725E401707219500C1DB31 /* OpenNI2 in CopyFiles */ = {isa = PBXBuildFile; fileRef = A9725E3D1707218500C1DB31 /* OpenNI2 */; };
+		A9725E411707219700C1DB31 /* libusb-1.0.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = A9725E341707216500C1DB31 /* libusb-1.0.0.dylib */; };
+		A9725E421707219900C1DB31 /* libusb-1.0.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = A9725E351707216500C1DB31 /* libusb-1.0.a */; };
+		A9725E431707219C00C1DB31 /* libNiTE2.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = A9725E381707216D00C1DB31 /* libNiTE2.dylib */; };
+		A9725E441707219E00C1DB31 /* libOpenNI2.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = A9725E3A1707217600C1DB31 /* libOpenNI2.dylib */; };
+		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
+		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
+		E45BE97C0E8CC7DD009D7055 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */; };
+		E45BE97D0E8CC7DD009D7055 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9730E8CC7DD009D7055 /* AudioToolbox.framework */; };
+		E45BE97E0E8CC7DD009D7055 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9740E8CC7DD009D7055 /* Carbon.framework */; };
+		E45BE97F0E8CC7DD009D7055 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9750E8CC7DD009D7055 /* CoreAudio.framework */; };
+		E45BE9800E8CC7DD009D7055 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9760E8CC7DD009D7055 /* CoreFoundation.framework */; };
+		E45BE9810E8CC7DD009D7055 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9770E8CC7DD009D7055 /* CoreServices.framework */; };
+		E45BE9830E8CC7DD009D7055 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9790E8CC7DD009D7055 /* OpenGL.framework */; };
+		E45BE9840E8CC7DD009D7055 /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */; };
+		E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1D0A3A1BDC003C02F2 /* main.cpp */; };
+		E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */; };
+		E4C2424710CC5A17004149E2 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424410CC5A17004149E2 /* AppKit.framework */; };
+		E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424510CC5A17004149E2 /* Cocoa.framework */; };
+		E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4C2424610CC5A17004149E2 /* IOKit.framework */; };
+		E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
+		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
+		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
+		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
+		bc01309880ed7b8022e9cd6b93c6a2ac /* ofxOpenNIFeed.cpp in Sources */ = {isa = PBXBuildFile; fileRef = c0cc3648c3ba36ed74dd51028cd207a5 /* ofxOpenNIFeed.cpp */; };
+		ecdbe8ccbad72bdf9a072be889ed23af /* ofxNiteUserTracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = e1575a2af278f1cde42c6df47534bebd /* ofxNiteUserTracker.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E4328147138ABC890047C5CB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E4B27C1510CBEB8E00536013;
+			remoteInfo = openFrameworks;
+		};
+		E4EEB9AB138B136A00A80321 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = E4B27C1410CBEB8E00536013;
+			remoteInfo = openFrameworks;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A9725E3E1707218900C1DB31 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				A9725E431707219C00C1DB31 /* libNiTE2.dylib in CopyFiles */,
+				A9725E3F1707219300C1DB31 /* OpenNI.ini in CopyFiles */,
+				A9725E401707219500C1DB31 /* OpenNI2 in CopyFiles */,
+				A9725E411707219700C1DB31 /* libusb-1.0.0.dylib in CopyFiles */,
+				A9725E421707219900C1DB31 /* libusb-1.0.a in CopyFiles */,
+				A9725E441707219E00C1DB31 /* libOpenNI2.dylib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E4C2427710CC5ABF004149E2 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		065afec73e5ae051d7f6666f0d0082c2 /* OniVersion.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OniVersion.h; path = ../../../addons/ofxQuickNITE/libs/openni/include/OniVersion.h; sourceTree = SOURCE_ROOT; };
+		1486831d1b59a2c75f485fc13cc8e492 /* NiteCTypes.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = NiteCTypes.h; path = ../../../addons/ofxQuickNITE/libs/nite/include/NiteCTypes.h; sourceTree = SOURCE_ROOT; };
+		14e87fc9fb72abc6e811c32507348987 /* OpenNI.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OpenNI.h; path = ../../../addons/ofxQuickNITE/libs/openni/include/OpenNI.h; sourceTree = SOURCE_ROOT; };
+		1c638d91baf6fcbda9467b0bad58da92 /* NiteCEnums.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = NiteCEnums.h; path = ../../../addons/ofxQuickNITE/libs/nite/include/NiteCEnums.h; sourceTree = SOURCE_ROOT; };
+		26fd30d625abebd24bc9bbcb2ca31d3c /* NiteEnums.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = NiteEnums.h; path = ../../../addons/ofxQuickNITE/libs/nite/include/NiteEnums.h; sourceTree = SOURCE_ROOT; };
+		37d98a4bfeb6adb9a22fc31685dbec56 /* ofxNITE.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxNITE.h; path = ../../../addons/ofxQuickNITE/src/ofxNITE.h; sourceTree = SOURCE_ROOT; };
+		510694e8676a2d0bc139d8f246563d91 /* OniPlatformMacOSX.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OniPlatformMacOSX.h; path = ../../../addons/ofxQuickNITE/libs/openni/include/MacOSX/OniPlatformMacOSX.h; sourceTree = SOURCE_ROOT; };
+		555f6f2a234b12c1115f2fc076b04f34 /* OniPlatformWin32.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OniPlatformWin32.h; path = ../../../addons/ofxQuickNITE/libs/openni/include/Win32/OniPlatformWin32.h; sourceTree = SOURCE_ROOT; };
+		63951834ea80890c7e28300c5bc89e7b /* ofxNiteHandTracker.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxNiteHandTracker.h; path = ../../../addons/ofxQuickNITE/src/ofxNiteHandTracker.h; sourceTree = SOURCE_ROOT; };
+		673c54415bd1eb0eaf52c2053dcdd3bd /* NiTE.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = NiTE.h; path = ../../../addons/ofxQuickNITE/libs/nite/include/NiTE.h; sourceTree = SOURCE_ROOT; };
+		76aaaf8a29411a2f3c93671f3199477c /* OniDriverTypes.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OniDriverTypes.h; path = ../../../addons/ofxQuickNITE/libs/openni/include/Driver/OniDriverTypes.h; sourceTree = SOURCE_ROOT; };
+		76b5ad7ff91fab26ee56e42cc925c68b /* OniCEnums.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OniCEnums.h; path = ../../../addons/ofxQuickNITE/libs/openni/include/OniCEnums.h; sourceTree = SOURCE_ROOT; };
+		7b2e8b9587bf845ca50d71e95b09b337 /* ofxNiteProcess.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxNiteProcess.cpp; path = ../../../addons/ofxQuickNITE/src/ofxNiteProcess.cpp; sourceTree = SOURCE_ROOT; };
+		800ae3acf9e55f509cc7fe9abf3ebf52 /* PS1080.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = PS1080.h; path = ../../../addons/ofxQuickNITE/libs/openni/include/PS1080.h; sourceTree = SOURCE_ROOT; };
+		84ee64a82c8d5b0c849d8910595f1e1b /* OniEnums.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OniEnums.h; path = ../../../addons/ofxQuickNITE/libs/openni/include/OniEnums.h; sourceTree = SOURCE_ROOT; };
+		9ac645529c5626ef667d6dc411819c2a /* ofxNiteHandTracker.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxNiteHandTracker.cpp; path = ../../../addons/ofxQuickNITE/src/ofxNiteHandTracker.cpp; sourceTree = SOURCE_ROOT; };
+		9e89e106bf073f939b1c5f3af66f8416 /* OniPlatformLinux-Arm.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = "OniPlatformLinux-Arm.h"; path = "../../../addons/ofxQuickNITE/libs/openni/include/Linux-Arm/OniPlatformLinux-Arm.h"; sourceTree = SOURCE_ROOT; };
+		A9725E341707216500C1DB31 /* libusb-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libusb-1.0.0.dylib"; path = "../libs/libusb/lib/osx/libusb-1.0.0.dylib"; sourceTree = "<group>"; };
+		A9725E351707216500C1DB31 /* libusb-1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libusb-1.0.a"; path = "../libs/libusb/lib/osx/libusb-1.0.a"; sourceTree = "<group>"; };
+		A9725E381707216D00C1DB31 /* libNiTE2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libNiTE2.dylib; path = ../libs/nite/lib/osx/libNiTE2.dylib; sourceTree = "<group>"; };
+		A9725E3A1707217600C1DB31 /* libOpenNI2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libOpenNI2.dylib; path = ../libs/openni/lib/osx/libOpenNI2.dylib; sourceTree = "<group>"; };
+		A9725E3C1707218500C1DB31 /* OpenNI.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = OpenNI.ini; path = ../libs/openni/drivers/OpenNI.ini; sourceTree = "<group>"; };
+		A9725E3D1707218500C1DB31 /* OpenNI2 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = OpenNI2; path = ../libs/openni/drivers/OpenNI2; sourceTree = "<group>"; };
+		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
+		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
+		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
+		E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
+		E45BE9730E8CC7DD009D7055 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = /System/Library/Frameworks/AudioToolbox.framework; sourceTree = "<absolute>"; };
+		E45BE9740E8CC7DD009D7055 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		E45BE9750E8CC7DD009D7055 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = /System/Library/Frameworks/CoreAudio.framework; sourceTree = "<absolute>"; };
+		E45BE9760E8CC7DD009D7055 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
+		E45BE9770E8CC7DD009D7055 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
+		E45BE9790E8CC7DD009D7055 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
+		E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
+		E4B69B5B0A3A1756003C02F2 /* example_openNI_feedDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = example_openNI_feedDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
+		E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = testApp.cpp; path = src/testApp.cpp; sourceTree = SOURCE_ROOT; };
+		E4B69E1F0A3A1BDC003C02F2 /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = testApp.h; path = src/testApp.h; sourceTree = SOURCE_ROOT; };
+		E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.xml; path = "openFrameworks-Info.plist"; sourceTree = "<group>"; };
+		E4C2424410CC5A17004149E2 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		E4C2424510CC5A17004149E2 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		E4C2424610CC5A17004149E2 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = /System/Library/Frameworks/IOKit.framework; sourceTree = "<absolute>"; };
+		E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
+		E4EB6923138AFD0F00A09F29 /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
+		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
+		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
+		a079aca63a28dfb25d4a6c6c368e42d0 /* NiteVersion.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = NiteVersion.h; path = ../../../addons/ofxQuickNITE/libs/nite/include/NiteVersion.h; sourceTree = SOURCE_ROOT; };
+		a339e6c32bdd482e1fb206be3b87e0cd /* OniCTypes.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OniCTypes.h; path = ../../../addons/ofxQuickNITE/libs/openni/include/OniCTypes.h; sourceTree = SOURCE_ROOT; };
+		a48ce0cca03585bc3494cf06fa243e14 /* OniCAPI.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OniCAPI.h; path = ../../../addons/ofxQuickNITE/libs/openni/include/OniCAPI.h; sourceTree = SOURCE_ROOT; };
+		bf0f02a9a10b1e4de08a84fe968b5589 /* OniPlatform.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OniPlatform.h; path = ../../../addons/ofxQuickNITE/libs/openni/include/OniPlatform.h; sourceTree = SOURCE_ROOT; };
+		c0cc3648c3ba36ed74dd51028cd207a5 /* ofxOpenNIFeed.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxOpenNIFeed.cpp; path = ../../../addons/ofxQuickNITE/src/ofxOpenNIFeed.cpp; sourceTree = SOURCE_ROOT; };
+		c3af9940fc7e0393a32dfa471b130401 /* OniProperties.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OniProperties.h; path = ../../../addons/ofxQuickNITE/libs/openni/include/OniProperties.h; sourceTree = SOURCE_ROOT; };
+		c717f9ea156cee98234f036c81ec95da /* OniPlatformLinux-x86.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = "OniPlatformLinux-x86.h"; path = "../../../addons/ofxQuickNITE/libs/openni/include/Linux-x86/OniPlatformLinux-x86.h"; sourceTree = SOURCE_ROOT; };
+		c88d48611a63d672d9327e02c3c96c36 /* ofxNiteUserTracker.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxNiteUserTracker.h; path = ../../../addons/ofxQuickNITE/src/ofxNiteUserTracker.h; sourceTree = SOURCE_ROOT; };
+		c990681ac30cf2e98db46ec7033aedfd /* OniPlatformAndroid-Arm.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = "OniPlatformAndroid-Arm.h"; path = "../../../addons/ofxQuickNITE/libs/openni/include/Android-Arm/OniPlatformAndroid-Arm.h"; sourceTree = SOURCE_ROOT; };
+		d6edfb01e063bdc746e0deb9d3992a66 /* ofxNITE.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxNITE.cpp; path = ../../../addons/ofxQuickNITE/src/ofxNITE.cpp; sourceTree = SOURCE_ROOT; };
+		e1575a2af278f1cde42c6df47534bebd /* ofxNiteUserTracker.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxNiteUserTracker.cpp; path = ../../../addons/ofxQuickNITE/src/ofxNiteUserTracker.cpp; sourceTree = SOURCE_ROOT; };
+		eaae03b3653ac8b2fb81e5bbfc803d94 /* NiteCAPI.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = NiteCAPI.h; path = ../../../addons/ofxQuickNITE/libs/nite/include/NiteCAPI.h; sourceTree = SOURCE_ROOT; };
+		ee7d32bcc15fe5c9f0c81916a348d7c9 /* ofxOpenNIFeed.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxOpenNIFeed.h; path = ../../../addons/ofxQuickNITE/src/ofxOpenNIFeed.h; sourceTree = SOURCE_ROOT; };
+		f1c697c1593efab37370acca690aadd3 /* OniDriverAPI.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OniDriverAPI.h; path = ../../../addons/ofxQuickNITE/libs/openni/include/Driver/OniDriverAPI.h; sourceTree = SOURCE_ROOT; };
+		f99fc82293fcb66fec62a1f25811f5d5 /* ofxNiteProcess.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxNiteProcess.h; path = ../../../addons/ofxQuickNITE/src/ofxNiteProcess.h; sourceTree = SOURCE_ROOT; };
+		ffff32635f282c471712a95b1de953d8 /* OniCProperties.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = OniCProperties.h; path = ../../../addons/ofxQuickNITE/libs/openni/include/OniCProperties.h; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E4B69B590A3A1756003C02F2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */,
+				E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */,
+				E4EB6799138ADC1D00A09F29 /* GLUT.framework in Frameworks */,
+				E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */,
+				E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */,
+				E45BE97C0E8CC7DD009D7055 /* ApplicationServices.framework in Frameworks */,
+				E45BE97D0E8CC7DD009D7055 /* AudioToolbox.framework in Frameworks */,
+				E45BE97E0E8CC7DD009D7055 /* Carbon.framework in Frameworks */,
+				E45BE97F0E8CC7DD009D7055 /* CoreAudio.framework in Frameworks */,
+				E45BE9800E8CC7DD009D7055 /* CoreFoundation.framework in Frameworks */,
+				E45BE9810E8CC7DD009D7055 /* CoreServices.framework in Frameworks */,
+				E45BE9830E8CC7DD009D7055 /* OpenGL.framework in Frameworks */,
+				E45BE9840E8CC7DD009D7055 /* QuickTime.framework in Frameworks */,
+				E4C2424710CC5A17004149E2 /* AppKit.framework in Frameworks */,
+				E4C2424810CC5A17004149E2 /* Cocoa.framework in Frameworks */,
+				E4C2424910CC5A17004149E2 /* IOKit.framework in Frameworks */,
+				E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */,
+				A9725E361707216500C1DB31 /* libusb-1.0.0.dylib in Frameworks */,
+				A9725E371707216500C1DB31 /* libusb-1.0.a in Frameworks */,
+				A9725E391707216D00C1DB31 /* libNiTE2.dylib in Frameworks */,
+				A9725E3B1707217600C1DB31 /* libOpenNI2.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1879815089613a1ad256a59dfd6a878a /* openni */ = {
+			isa = PBXGroup;
+			children = (
+				1d23c7d20d286634788ea7bc140ea478 /* include */,
+			);
+			name = openni;
+			sourceTree = "<group>";
+		};
+		1d23c7d20d286634788ea7bc140ea478 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				3591ab39b5d9982ec1cc6d0c6de02045 /* Android-Arm */,
+				f832beeefa91508117dc4581f471fbef /* Driver */,
+				1d5eedab94007702af06a84d37168d5b /* Linux-Arm */,
+				66a2750c32f0453c8fb1c34c66ffa45c /* Linux-x86 */,
+				9ca829c34076058f4e0819ca872e9164 /* MacOSX */,
+				a48ce0cca03585bc3494cf06fa243e14 /* OniCAPI.h */,
+				76b5ad7ff91fab26ee56e42cc925c68b /* OniCEnums.h */,
+				ffff32635f282c471712a95b1de953d8 /* OniCProperties.h */,
+				a339e6c32bdd482e1fb206be3b87e0cd /* OniCTypes.h */,
+				84ee64a82c8d5b0c849d8910595f1e1b /* OniEnums.h */,
+				bf0f02a9a10b1e4de08a84fe968b5589 /* OniPlatform.h */,
+				c3af9940fc7e0393a32dfa471b130401 /* OniProperties.h */,
+				065afec73e5ae051d7f6666f0d0082c2 /* OniVersion.h */,
+				14e87fc9fb72abc6e811c32507348987 /* OpenNI.h */,
+				800ae3acf9e55f509cc7fe9abf3ebf52 /* PS1080.h */,
+				65960038867ab990ad6eca53e706bafd /* Win32 */,
+			);
+			name = include;
+			sourceTree = "<group>";
+		};
+		1d5eedab94007702af06a84d37168d5b /* Linux-Arm */ = {
+			isa = PBXGroup;
+			children = (
+				9e89e106bf073f939b1c5f3af66f8416 /* OniPlatformLinux-Arm.h */,
+			);
+			name = "Linux-Arm";
+			sourceTree = "<group>";
+		};
+		3591ab39b5d9982ec1cc6d0c6de02045 /* Android-Arm */ = {
+			isa = PBXGroup;
+			children = (
+				c990681ac30cf2e98db46ec7033aedfd /* OniPlatformAndroid-Arm.h */,
+			);
+			name = "Android-Arm";
+			sourceTree = "<group>";
+		};
+		381af489ca6f0adb75bc3eb24627c7ad /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				a4441af2c5ce91b84d248c44c17f2cf6 /* nite */,
+				1879815089613a1ad256a59dfd6a878a /* openni */,
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
+		513af7f999b84d24fe16b86925ce5484 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				673c54415bd1eb0eaf52c2053dcdd3bd /* NiTE.h */,
+				eaae03b3653ac8b2fb81e5bbfc803d94 /* NiteCAPI.h */,
+				1c638d91baf6fcbda9467b0bad58da92 /* NiteCEnums.h */,
+				1486831d1b59a2c75f485fc13cc8e492 /* NiteCTypes.h */,
+				26fd30d625abebd24bc9bbcb2ca31d3c /* NiteEnums.h */,
+				a079aca63a28dfb25d4a6c6c368e42d0 /* NiteVersion.h */,
+			);
+			name = include;
+			sourceTree = "<group>";
+		};
+		65960038867ab990ad6eca53e706bafd /* Win32 */ = {
+			isa = PBXGroup;
+			children = (
+				555f6f2a234b12c1115f2fc076b04f34 /* OniPlatformWin32.h */,
+			);
+			name = Win32;
+			sourceTree = "<group>";
+		};
+		66a2750c32f0453c8fb1c34c66ffa45c /* Linux-x86 */ = {
+			isa = PBXGroup;
+			children = (
+				c717f9ea156cee98234f036c81ec95da /* OniPlatformLinux-x86.h */,
+			);
+			name = "Linux-x86";
+			sourceTree = "<group>";
+		};
+		9b0be33c8f07f5075f9754923265a9f2 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				d6edfb01e063bdc746e0deb9d3992a66 /* ofxNITE.cpp */,
+				37d98a4bfeb6adb9a22fc31685dbec56 /* ofxNITE.h */,
+				9ac645529c5626ef667d6dc411819c2a /* ofxNiteHandTracker.cpp */,
+				63951834ea80890c7e28300c5bc89e7b /* ofxNiteHandTracker.h */,
+				7b2e8b9587bf845ca50d71e95b09b337 /* ofxNiteProcess.cpp */,
+				f99fc82293fcb66fec62a1f25811f5d5 /* ofxNiteProcess.h */,
+				e1575a2af278f1cde42c6df47534bebd /* ofxNiteUserTracker.cpp */,
+				c88d48611a63d672d9327e02c3c96c36 /* ofxNiteUserTracker.h */,
+				c0cc3648c3ba36ed74dd51028cd207a5 /* ofxOpenNIFeed.cpp */,
+				ee7d32bcc15fe5c9f0c81916a348d7c9 /* ofxOpenNIFeed.h */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		9ca829c34076058f4e0819ca872e9164 /* MacOSX */ = {
+			isa = PBXGroup;
+			children = (
+				510694e8676a2d0bc139d8f246563d91 /* OniPlatformMacOSX.h */,
+			);
+			name = MacOSX;
+			sourceTree = "<group>";
+		};
+		A9725E331707215700C1DB31 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A9725E3C1707218500C1DB31 /* OpenNI.ini */,
+				A9725E3D1707218500C1DB31 /* OpenNI2 */,
+				A9725E341707216500C1DB31 /* libusb-1.0.0.dylib */,
+				A9725E351707216500C1DB31 /* libusb-1.0.a */,
+				A9725E381707216D00C1DB31 /* libNiTE2.dylib */,
+				A9725E3A1707217600C1DB31 /* libOpenNI2.dylib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		BB4B014C10F69532006C3DED /* addons */ = {
+			isa = PBXGroup;
+			children = (
+				f5b510e1465cb8a57223621579aa8a95 /* ofxQuickNITE */,
+			);
+			name = addons;
+			sourceTree = "<group>";
+		};
+		BBAB23C913894ECA00AA2426 /* system frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E7F985F515E0DE99003869B5 /* Accelerate.framework */,
+				E4C2424410CC5A17004149E2 /* AppKit.framework */,
+				E4C2424510CC5A17004149E2 /* Cocoa.framework */,
+				E4C2424610CC5A17004149E2 /* IOKit.framework */,
+				E45BE9710E8CC7DD009D7055 /* AGL.framework */,
+				E45BE9720E8CC7DD009D7055 /* ApplicationServices.framework */,
+				E45BE9730E8CC7DD009D7055 /* AudioToolbox.framework */,
+				E45BE9740E8CC7DD009D7055 /* Carbon.framework */,
+				E45BE9750E8CC7DD009D7055 /* CoreAudio.framework */,
+				E45BE9760E8CC7DD009D7055 /* CoreFoundation.framework */,
+				E45BE9770E8CC7DD009D7055 /* CoreServices.framework */,
+				E45BE9790E8CC7DD009D7055 /* OpenGL.framework */,
+				E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */,
+				E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */,
+				E7E077E715D3B6510020DFD4 /* QTKit.framework */,
+			);
+			name = "system frameworks";
+			sourceTree = "<group>";
+		};
+		BBAB23CA13894EDB00AA2426 /* 3rd party frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BBAB23BE13894E4700AA2426 /* GLUT.framework */,
+			);
+			name = "3rd party frameworks";
+			sourceTree = "<group>";
+		};
+		E4328144138ABC890047C5CB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E4328148138ABC890047C5CB /* openFrameworksDebug.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E45BE5980E8CC70C009D7055 /* frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BBAB23CA13894EDB00AA2426 /* 3rd party frameworks */,
+				BBAB23C913894ECA00AA2426 /* system frameworks */,
+			);
+			name = frameworks;
+			sourceTree = "<group>";
+		};
+		E4B69B4A0A3A1720003C02F2 = {
+			isa = PBXGroup;
+			children = (
+				A9725E331707215700C1DB31 /* Resources */,
+				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
+				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
+				E4B69E1C0A3A1BDC003C02F2 /* src */,
+				E4EEC9E9138DF44700A80321 /* openFrameworks */,
+				BB4B014C10F69532006C3DED /* addons */,
+				E45BE5980E8CC70C009D7055 /* frameworks */,
+				E4B69B5B0A3A1756003C02F2 /* example_openNI_feedDebug.app */,
+			);
+			sourceTree = "<group>";
+		};
+		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
+				E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */,
+				E4B69E1F0A3A1BDC003C02F2 /* testApp.h */,
+			);
+			path = src;
+			sourceTree = SOURCE_ROOT;
+		};
+		E4EEC9E9138DF44700A80321 /* openFrameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */,
+				E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */,
+			);
+			name = openFrameworks;
+			sourceTree = "<group>";
+		};
+		a4441af2c5ce91b84d248c44c17f2cf6 /* nite */ = {
+			isa = PBXGroup;
+			children = (
+				513af7f999b84d24fe16b86925ce5484 /* include */,
+			);
+			name = nite;
+			sourceTree = "<group>";
+		};
+		f5b510e1465cb8a57223621579aa8a95 /* ofxQuickNITE */ = {
+			isa = PBXGroup;
+			children = (
+				9b0be33c8f07f5075f9754923265a9f2 /* src */,
+				381af489ca6f0adb75bc3eb24627c7ad /* libs */,
+			);
+			name = ofxQuickNITE;
+			sourceTree = "<group>";
+		};
+		f832beeefa91508117dc4581f471fbef /* Driver */ = {
+			isa = PBXGroup;
+			children = (
+				f1c697c1593efab37370acca690aadd3 /* OniDriverAPI.h */,
+				76aaaf8a29411a2f3c93671f3199477c /* OniDriverTypes.h */,
+			);
+			name = Driver;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E4B69B5A0A3A1756003C02F2 /* example_openNI_feed */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "example_openNI_feed" */;
+			buildPhases = (
+				E4B69B580A3A1756003C02F2 /* Sources */,
+				E4B69B590A3A1756003C02F2 /* Frameworks */,
+				E4B6FFFD0C3F9AB9008CF71C /* ShellScript */,
+				E4C2427710CC5ABF004149E2 /* CopyFiles */,
+				A9725E3E1707218900C1DB31 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E4EEB9AC138B136A00A80321 /* PBXTargetDependency */,
+			);
+			name = example_openNI_feed;
+			productName = myOFApp;
+			productReference = E4B69B5B0A3A1756003C02F2 /* example_openNI_feedDebug.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "example_openNI_feed" */;
+			compatibilityVersion = "Xcode 2.4";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = E4B69B4A0A3A1720003C02F2;
+			productRefGroup = E4B69B4A0A3A1720003C02F2;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = E4328144138ABC890047C5CB /* Products */;
+					ProjectRef = E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				E4B69B5A0A3A1756003C02F2 /* example_openNI_feed */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		E4328148138ABC890047C5CB /* openFrameworksDebug.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = openFrameworksDebug.a;
+			remoteRef = E4328147138ABC890047C5CB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E4B6FFFD0C3F9AB9008CF71C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp -f ../../../libs/fmodex/lib/osx/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/libfmodex.dylib\"; install_name_tool -change ./libfmodex.dylib @executable_path/libfmodex.dylib \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app/Contents/MacOS/$PRODUCT_NAME\";";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E4B69B580A3A1756003C02F2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
+				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
+				30cd1cab70fef1139e2018942c503c38 /* ofxNITE.cpp in Sources */,
+				33305ffddba2319a8d02bf5dfe3d4989 /* ofxNiteHandTracker.cpp in Sources */,
+				0e64790a2caf7ef5cb7614df78dd30a9 /* ofxNiteProcess.cpp in Sources */,
+				ecdbe8ccbad72bdf9a072be889ed23af /* ofxNiteUserTracker.cpp in Sources */,
+				bc01309880ed7b8022e9cd6b93c6a2ac /* ofxOpenNIFeed.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E4EEB9AC138B136A00A80321 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = openFrameworks;
+			targetProxy = E4EEB9AB138B136A00A80321 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		E4B69B4E0A3A1720003C02F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/bin/";
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				GCC_AUTO_VECTORIZATION = YES;
+				GCC_ENABLE_SSE3_EXTENSIONS = YES;
+				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
+				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = NO;
+				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = NO;
+				GCC_WARN_UNINITIALIZED_AUTOS = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					../../../addons/ofxQuickNITE/libs,
+					../../../addons/ofxQuickNITE/libs/libfreenect,
+					../../../addons/ofxQuickNITE/libs/libfreenect/include,
+					../../../addons/ofxQuickNITE/libs/libfreenect/include/libfreenect,
+					../../../addons/ofxQuickNITE/libs/libfreenect/libs,
+					../../../addons/ofxQuickNITE/libs/libusb,
+					../../../addons/ofxQuickNITE/libs/libusb/lib,
+					../../../addons/ofxQuickNITE/libs/libusb/lib/osx,
+					../../../addons/ofxQuickNITE/libs/nite,
+					../../../addons/ofxQuickNITE/libs/nite/License,
+					../../../addons/ofxQuickNITE/libs/nite/NiTE2,
+					../../../addons/ofxQuickNITE/libs/nite/NiTE2/Data,
+					../../../addons/ofxQuickNITE/libs/nite/include,
+					../../../addons/ofxQuickNITE/libs/nite/lib,
+					../../../addons/ofxQuickNITE/libs/nite/lib/osx,
+					../../../addons/ofxQuickNITE/libs/openni,
+					../../../addons/ofxQuickNITE/libs/openni/drivers,
+					../../../addons/ofxQuickNITE/libs/openni/drivers/OpenNI2,
+					../../../addons/ofxQuickNITE/libs/openni/drivers/OpenNI2/Drivers,
+					../../../addons/ofxQuickNITE/libs/openni/include,
+					"../../../addons/ofxQuickNITE/libs/openni/include/Android-Arm",
+					../../../addons/ofxQuickNITE/libs/openni/include/Driver,
+					"../../../addons/ofxQuickNITE/libs/openni/include/Linux-Arm",
+					"../../../addons/ofxQuickNITE/libs/openni/include/Linux-x86",
+					../../../addons/ofxQuickNITE/libs/openni/include/MacOSX,
+					../../../addons/ofxQuickNITE/libs/openni/include/Win32,
+					../../../addons/ofxQuickNITE/libs/openni/lib,
+					../../../addons/ofxQuickNITE/libs/openni/lib/osx,
+					../../../addons/ofxQuickNITE/src,
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-D__MACOSX_CORE__",
+					"-lpthread",
+					"-mtune=native",
+				);
+				OTHER_LDFLAGS = (
+					"$(OF_CORE_LIBS)",
+					"../../../addons/ofxQuickNITE/libs/libusb/lib/osx/libusb-1.0.0.dylib",
+					"../../../addons/ofxQuickNITE/libs/libusb/lib/osx/libusb-1.0.a",
+					../../../addons/ofxQuickNITE/libs/nite/lib/osx/libNiTE2.dylib,
+					../../../addons/ofxQuickNITE/libs/openni/lib/osx/libOpenNI2.dylib,
+				);
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		E4B69B4F0A3A1720003C02F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4EB6923138AFD0F00A09F29 /* Project.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(NATIVE_ARCH)";
+				CONFIGURATION_BUILD_DIR = "$(SRCROOT)/bin/";
+				COPY_PHASE_STRIP = YES;
+				DEAD_CODE_STRIPPING = YES;
+				GCC_AUTO_VECTORIZATION = YES;
+				GCC_ENABLE_SSE3_EXTENSIONS = YES;
+				GCC_ENABLE_SUPPLEMENTAL_SSE3_INSTRUCTIONS = YES;
+				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_UNROLL_LOOPS = YES;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = YES;
+				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = NO;
+				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = NO;
+				GCC_WARN_UNINITIALIZED_AUTOS = NO;
+				GCC_WARN_UNUSED_VALUE = NO;
+				GCC_WARN_UNUSED_VARIABLE = NO;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					../../../addons/ofxQuickNITE/libs,
+					../../../addons/ofxQuickNITE/libs/libfreenect,
+					../../../addons/ofxQuickNITE/libs/libfreenect/include,
+					../../../addons/ofxQuickNITE/libs/libfreenect/include/libfreenect,
+					../../../addons/ofxQuickNITE/libs/libfreenect/libs,
+					../../../addons/ofxQuickNITE/libs/libusb,
+					../../../addons/ofxQuickNITE/libs/libusb/lib,
+					../../../addons/ofxQuickNITE/libs/libusb/lib/osx,
+					../../../addons/ofxQuickNITE/libs/nite,
+					../../../addons/ofxQuickNITE/libs/nite/License,
+					../../../addons/ofxQuickNITE/libs/nite/NiTE2,
+					../../../addons/ofxQuickNITE/libs/nite/NiTE2/Data,
+					../../../addons/ofxQuickNITE/libs/nite/include,
+					../../../addons/ofxQuickNITE/libs/nite/lib,
+					../../../addons/ofxQuickNITE/libs/nite/lib/osx,
+					../../../addons/ofxQuickNITE/libs/openni,
+					../../../addons/ofxQuickNITE/libs/openni/drivers,
+					../../../addons/ofxQuickNITE/libs/openni/drivers/OpenNI2,
+					../../../addons/ofxQuickNITE/libs/openni/drivers/OpenNI2/Drivers,
+					../../../addons/ofxQuickNITE/libs/openni/include,
+					"../../../addons/ofxQuickNITE/libs/openni/include/Android-Arm",
+					../../../addons/ofxQuickNITE/libs/openni/include/Driver,
+					"../../../addons/ofxQuickNITE/libs/openni/include/Linux-Arm",
+					"../../../addons/ofxQuickNITE/libs/openni/include/Linux-x86",
+					../../../addons/ofxQuickNITE/libs/openni/include/MacOSX,
+					../../../addons/ofxQuickNITE/libs/openni/include/Win32,
+					../../../addons/ofxQuickNITE/libs/openni/lib,
+					../../../addons/ofxQuickNITE/libs/openni/lib/osx,
+					../../../addons/ofxQuickNITE/src,
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"-D__MACOSX_CORE__",
+					"-lpthread",
+					"-mtune=native",
+				);
+				OTHER_LDFLAGS = (
+					"$(OF_CORE_LIBS)",
+					"../../../addons/ofxQuickNITE/libs/libusb/lib/osx/libusb-1.0.0.dylib",
+					"../../../addons/ofxQuickNITE/libs/libusb/lib/osx/libusb-1.0.a",
+					../../../addons/ofxQuickNITE/libs/nite/lib/osx/libNiTE2.dylib,
+					../../../addons/ofxQuickNITE/libs/openni/lib/osx/libOpenNI2.dylib,
+				);
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		E4B69B600A3A1757003C02F2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = NONE;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				INFOPLIST_FILE = "openFrameworks-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_16)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_17)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_18)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_19)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_20)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_21)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_22)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_23)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_24)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_25)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_26)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_27)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_28)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_29)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_30)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_31)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_32)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_33)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_34)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_35)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_36)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_37)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_38)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_39)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_40)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_41)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_42)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_43)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_44)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_45)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_46)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_47)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_48)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_49)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libs/libusb/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libs/nite/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../libs/openni/lib/osx\"";
+				PREBINDING = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)Debug";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		E4B69B610A3A1757003C02F2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+				);
+				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_MODEL_TUNING = NONE;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Carbon.framework/Headers/Carbon.h";
+				INFOPLIST_FILE = "openFrameworks-Info.plist";
+				INSTALL_PATH = "$(HOME)/Applications";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_4)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_14)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_15)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_10)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_11)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_12)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_13)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_16)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_17)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_18)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_19)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_20)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_21)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_22)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_23)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_24)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_25)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_26)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_27)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_28)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_29)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_30)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_31)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_32)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_33)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_34)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_35)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_36)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_37)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_38)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_39)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_40)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_41)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_42)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_43)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_44)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_45)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_46)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_47)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_48)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_49)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3)",
+				);
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libs/libusb/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libs/nite/lib/osx\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_3 = "\"$(SRCROOT)/../libs/openni/lib/osx\"";
+				PREBINDING = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "example_openNI_feed" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4B69B4E0A3A1720003C02F2 /* Debug */,
+				E4B69B4F0A3A1720003C02F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E4B69B5F0A3A1757003C02F2 /* Build configuration list for PBXNativeTarget "example_openNI_feed" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E4B69B600A3A1757003C02F2 /* Debug */,
+				E4B69B610A3A1757003C02F2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E4B69B4C0A3A1720003C02F2 /* Project object */;
+}
