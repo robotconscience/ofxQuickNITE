@@ -7,14 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		23321405be2d6ae052c60f992a83899a /* ofxOpenNIFeed.cpp in Sources */ = {isa = PBXBuildFile; fileRef = b53425e785d5db20792610154c701c66 /* ofxOpenNIFeed.cpp */; };
-		33305ffddba2319a8d02bf5dfe3d4989 /* ofxNiteHandTracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9ac645529c5626ef667d6dc411819c2a /* ofxNiteHandTracker.cpp */; };
 		A93B078F16E43B5300CE5F1A /* libNiTE2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A93B078E16E43B5300CE5F1A /* libNiTE2.dylib */; };
 		A93B079016E43B5600CE5F1A /* libNiTE2.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = A93B078E16E43B5300CE5F1A /* libNiTE2.dylib */; };
 		A93B079216E43B8E00CE5F1A /* libOpenNI2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A93B079116E43B8E00CE5F1A /* libOpenNI2.dylib */; };
 		A93B079C16E43BA100CE5F1A /* libOpenNI2.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = A93B079116E43B8E00CE5F1A /* libOpenNI2.dylib */; };
 		A93B07A016E43DFF00CE5F1A /* OpenNI.ini in CopyFiles */ = {isa = PBXBuildFile; fileRef = A93B079E16E43DF700CE5F1A /* OpenNI.ini */; };
 		A93B07A116E43E0200CE5F1A /* OpenNI2 in CopyFiles */ = {isa = PBXBuildFile; fileRef = A93B079F16E43DF700CE5F1A /* OpenNI2 */; };
+		A9725E2B170718C400C1DB31 /* libusb-1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A9725E29170718C400C1DB31 /* libusb-1.0.0.dylib */; };
+		A9725E2C170718C400C1DB31 /* libusb-1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A9725E2A170718C400C1DB31 /* libusb-1.0.a */; };
+		A9725E2D170718C900C1DB31 /* libusb-1.0.0.dylib in CopyFiles */ = {isa = PBXBuildFile; fileRef = A9725E29170718C400C1DB31 /* libusb-1.0.0.dylib */; };
+		A9725E2E170718CC00C1DB31 /* libusb-1.0.a in CopyFiles */ = {isa = PBXBuildFile; fileRef = A9725E2A170718C400C1DB31 /* libusb-1.0.a */; };
+		A977649A16EF6C7000A19A02 /* ofxNITE.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A977649016EF6C6F00A19A02 /* ofxNITE.cpp */; };
+		A977649B16EF6C7000A19A02 /* ofxNiteHandTracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A977649216EF6C6F00A19A02 /* ofxNiteHandTracker.cpp */; };
+		A977649C16EF6C7000A19A02 /* ofxNiteProcess.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A977649416EF6C6F00A19A02 /* ofxNiteProcess.cpp */; };
+		A977649D16EF6C7000A19A02 /* ofxNiteUserTracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A977649616EF6C6F00A19A02 /* ofxNiteUserTracker.cpp */; };
+		A977649E16EF6C7000A19A02 /* ofxOpenNIFeed.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A977649816EF6C6F00A19A02 /* ofxOpenNIFeed.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -63,6 +70,8 @@
 			files = (
 				A93B079C16E43BA100CE5F1A /* libOpenNI2.dylib in CopyFiles */,
 				A93B079016E43B5600CE5F1A /* libNiTE2.dylib in CopyFiles */,
+				A9725E2D170718C900C1DB31 /* libusb-1.0.0.dylib in CopyFiles */,
+				A9725E2E170718CC00C1DB31 /* libusb-1.0.a in CopyFiles */,
 				A93B07A016E43DFF00CE5F1A /* OpenNI.ini in CopyFiles */,
 				A93B07A116E43E0200CE5F1A /* OpenNI2 in CopyFiles */,
 			);
@@ -81,13 +90,22 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3c63a1eac3d04027ca9f6b2af6f35ae6 /* ofxOpenNIFeed.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxOpenNIFeed.h; path = ../../../addons/ofxQuickNITE/src/ofxOpenNIFeed.h; sourceTree = SOURCE_ROOT; };
-		63951834ea80890c7e28300c5bc89e7b /* ofxNiteHandTracker.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxNiteHandTracker.h; path = ../../../addons/ofxQuickNITE/src/ofxNiteHandTracker.h; sourceTree = SOURCE_ROOT; };
-		9ac645529c5626ef667d6dc411819c2a /* ofxNiteHandTracker.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxNiteHandTracker.cpp; path = ../../../addons/ofxQuickNITE/src/ofxNiteHandTracker.cpp; sourceTree = SOURCE_ROOT; };
 		A93B078E16E43B5300CE5F1A /* libNiTE2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libNiTE2.dylib; path = ../libs/nite/lib/osx/libNiTE2.dylib; sourceTree = "<group>"; };
 		A93B079116E43B8E00CE5F1A /* libOpenNI2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libOpenNI2.dylib; path = ../libs/openni/lib/osx/libOpenNI2.dylib; sourceTree = "<group>"; };
 		A93B079E16E43DF700CE5F1A /* OpenNI.ini */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = OpenNI.ini; path = ../libs/openni/drivers/OpenNI.ini; sourceTree = "<group>"; };
 		A93B079F16E43DF700CE5F1A /* OpenNI2 */ = {isa = PBXFileReference; lastKnownFileType = folder; name = OpenNI2; path = ../libs/openni/drivers/OpenNI2; sourceTree = "<group>"; };
+		A9725E29170718C400C1DB31 /* libusb-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libusb-1.0.0.dylib"; path = "../libs/libusb/lib/osx/libusb-1.0.0.dylib"; sourceTree = "<group>"; };
+		A9725E2A170718C400C1DB31 /* libusb-1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libusb-1.0.a"; path = "../libs/libusb/lib/osx/libusb-1.0.a"; sourceTree = "<group>"; };
+		A9725E2F17071A3400C1DB31 /* ofxOpenNIFeed.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxOpenNIFeed.h; path = ../src/ofxOpenNIFeed.h; sourceTree = "<group>"; };
+		A9725E3117071B1300C1DB31 /* ofxNiteHandTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxNiteHandTracker.h; path = ../src/ofxNiteHandTracker.h; sourceTree = "<group>"; };
+		A977649016EF6C6F00A19A02 /* ofxNITE.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxNITE.cpp; path = ../src/ofxNITE.cpp; sourceTree = "<group>"; };
+		A977649116EF6C6F00A19A02 /* ofxNITE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxNITE.h; path = ../src/ofxNITE.h; sourceTree = "<group>"; };
+		A977649216EF6C6F00A19A02 /* ofxNiteHandTracker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxNiteHandTracker.cpp; path = ../src/ofxNiteHandTracker.cpp; sourceTree = "<group>"; };
+		A977649416EF6C6F00A19A02 /* ofxNiteProcess.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxNiteProcess.cpp; path = ../src/ofxNiteProcess.cpp; sourceTree = "<group>"; };
+		A977649516EF6C6F00A19A02 /* ofxNiteProcess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxNiteProcess.h; path = ../src/ofxNiteProcess.h; sourceTree = "<group>"; };
+		A977649616EF6C6F00A19A02 /* ofxNiteUserTracker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxNiteUserTracker.cpp; path = ../src/ofxNiteUserTracker.cpp; sourceTree = "<group>"; };
+		A977649716EF6C6F00A19A02 /* ofxNiteUserTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxNiteUserTracker.h; path = ../src/ofxNiteUserTracker.h; sourceTree = "<group>"; };
+		A977649816EF6C6F00A19A02 /* ofxOpenNIFeed.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxOpenNIFeed.cpp; path = ../src/ofxOpenNIFeed.cpp; sourceTree = "<group>"; };
 		A9C57F2316E3E7BE00A64011 /* NiTE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NiTE.h; sourceTree = "<group>"; };
 		A9C57F2416E3E7BE00A64011 /* NiteCAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NiteCAPI.h; sourceTree = "<group>"; };
 		A9C57F2516E3E7BE00A64011 /* NiteCEnums.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NiteCEnums.h; sourceTree = "<group>"; };
@@ -140,7 +158,6 @@
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
-		b53425e785d5db20792610154c701c66 /* ofxOpenNIFeed.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxOpenNIFeed.cpp; path = ../../../addons/ofxQuickNITE/src/ofxOpenNIFeed.cpp; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +184,8 @@
 				E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */,
 				A93B078F16E43B5300CE5F1A /* libNiTE2.dylib in Frameworks */,
 				A93B079216E43B8E00CE5F1A /* libOpenNI2.dylib in Frameworks */,
+				A9725E2B170718C400C1DB31 /* libusb-1.0.0.dylib in Frameworks */,
+				A9725E2C170718C400C1DB31 /* libusb-1.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,10 +204,16 @@
 		9b0be33c8f07f5075f9754923265a9f2 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				9ac645529c5626ef667d6dc411819c2a /* ofxNiteHandTracker.cpp */,
-				63951834ea80890c7e28300c5bc89e7b /* ofxNiteHandTracker.h */,
-				b53425e785d5db20792610154c701c66 /* ofxOpenNIFeed.cpp */,
-				3c63a1eac3d04027ca9f6b2af6f35ae6 /* ofxOpenNIFeed.h */,
+				A977649016EF6C6F00A19A02 /* ofxNITE.cpp */,
+				A977649116EF6C6F00A19A02 /* ofxNITE.h */,
+				A977649216EF6C6F00A19A02 /* ofxNiteHandTracker.cpp */,
+				A9725E3117071B1300C1DB31 /* ofxNiteHandTracker.h */,
+				A977649416EF6C6F00A19A02 /* ofxNiteProcess.cpp */,
+				A977649516EF6C6F00A19A02 /* ofxNiteProcess.h */,
+				A977649616EF6C6F00A19A02 /* ofxNiteUserTracker.cpp */,
+				A977649716EF6C6F00A19A02 /* ofxNiteUserTracker.h */,
+				A977649816EF6C6F00A19A02 /* ofxOpenNIFeed.cpp */,
+				A9725E2F17071A3400C1DB31 /* ofxOpenNIFeed.h */,
 			);
 			name = src;
 			sourceTree = "<group>";
@@ -196,6 +221,8 @@
 		A93B078D16E43B4C00CE5F1A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A9725E29170718C400C1DB31 /* libusb-1.0.0.dylib */,
+				A9725E2A170718C400C1DB31 /* libusb-1.0.a */,
 				A93B079E16E43DF700CE5F1A /* OpenNI.ini */,
 				A93B079F16E43DF700CE5F1A /* OpenNI2 */,
 				A93B079116E43B8E00CE5F1A /* libOpenNI2.dylib */,
@@ -504,8 +531,11 @@
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
-				33305ffddba2319a8d02bf5dfe3d4989 /* ofxNiteHandTracker.cpp in Sources */,
-				23321405be2d6ae052c60f992a83899a /* ofxOpenNIFeed.cpp in Sources */,
+				A977649A16EF6C7000A19A02 /* ofxNITE.cpp in Sources */,
+				A977649B16EF6C7000A19A02 /* ofxNiteHandTracker.cpp in Sources */,
+				A977649C16EF6C7000A19A02 /* ofxNiteProcess.cpp in Sources */,
+				A977649D16EF6C7000A19A02 /* ofxNiteUserTracker.cpp in Sources */,
+				A977649E16EF6C7000A19A02 /* ofxOpenNIFeed.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -734,6 +764,8 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libs/libusb/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libs/nite/lib/osx\"";
@@ -742,6 +774,8 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../libs/nite/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../libs/openni/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7 = "\"$(SRCROOT)/../libs/openni/lib/osx/OpenNI2/Drivers\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8 = "";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9 = "\"$(SRCROOT)/../libs/libusb/lib/osx\"";
 				PREBINDING = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
 				WRAPPER_EXTENSION = app;
@@ -834,6 +868,8 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8)",
+					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../libs/libusb/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_2 = "\"$(SRCROOT)/../libs/nite/lib/osx\"";
@@ -842,6 +878,8 @@
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_5 = "\"$(SRCROOT)/../libs/nite/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)/../libs/openni/lib/osx\"";
 				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_7 = "\"$(SRCROOT)/../libs/openni/lib/osx/OpenNI2/Drivers\"";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_8 = "";
+				LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_9 = "\"$(SRCROOT)/../libs/libusb/lib/osx\"";
 				PREBINDING = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

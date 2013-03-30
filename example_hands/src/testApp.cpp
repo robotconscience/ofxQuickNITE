@@ -2,7 +2,8 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-    handTracker.setup();
+    bool bOpen = handTracker.open();
+    cout <<"Successfully opened? "<<bOpen<<endl;
     handTracker.start();
     
     ofAddListener(handTracker.calibrationStarted, this, &testApp::onCalibrationStarted);
