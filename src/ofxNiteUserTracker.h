@@ -17,7 +17,7 @@
 
 // ofxNiteUserTracker
 
-class ofxNiteUserTracker : public ofThread
+class ofxNiteUserTracker : protected ofThread
 {
 public:
     

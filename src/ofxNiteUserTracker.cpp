@@ -28,7 +28,7 @@ bool ofxNiteUserTracker::setup( string deviceUri, bool bUseRGB ){
     settings.deviceURI  = deviceUri;
     settings.doColor    = bUseRGB;
     
-    bool bSetup = oniGrabber.setup(settings, false);
+    bool bSetup = oniGrabber.setup(settings);
     if ( !bSetup ){
         return false;
     }
@@ -47,6 +47,8 @@ bool ofxNiteUserTracker::setup( string deviceUri, bool bUseRGB ){
 	}
     
     bOpen = true;
+    
+    startThread();
     return true;
 }
 
@@ -67,19 +69,25 @@ void ofxNiteUserTracker::update(){
 
 //--------------------------------------------------------------
 void ofxNiteUserTracker::draw( int x, int y){
+    ofPushStyle();
+    ofEnableAlphaBlending();
     ofPushMatrix();{
         ofTranslate(x, y);
-//        ofxOpenNIFeed::draw(0,0);
+        ofSetColor(255, 150);
+        oniGrabber.draw();
+        ofSetColor(255);
         for (map<int, ofxNiteUser>::iterator it = current_users.begin(); it != current_users.end(); ++it){
             it->second.draw();
         }
         
     } ofPopMatrix();
+    ofPopStyle();
 }
 
 //--------------------------------------------------------------
 void ofxNiteUserTracker::close(){
     if ( bOpen ){
+        stopThread();
         bOpen = false;
 //        stop();
         m_pUserTracker->destroy();
@@ -100,7 +108,7 @@ void ofxNiteUserTracker::threadedFunction(){
         lock();
         process();
         unlock();
-        sleep(10);
+        yield();
     }
 }
 
@@ -122,7 +130,7 @@ void ofxNiteUserTracker::process(){
 	depthFrame = userTrackerFrame.getDepthFrame();
     // update pixels of feed
     if ( depthFrame.isValid() ){
-        oniGrabber.depthSource.updateFrame(depthFrame);
+        //oniGrabber.depthSource.updateFrame(depthFrame);
     }
     
     // current user pixels

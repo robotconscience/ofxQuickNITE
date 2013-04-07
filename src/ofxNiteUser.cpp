@@ -19,7 +19,7 @@ ofxNiteUser::ofxNiteUser(){
 
 //--------------------------------------------------------------
 void ofxNiteUser::updateTexture(){
-    if ( !tex.bAllocated()){
+    if ( !tex.bAllocated() || pixels.getWidth() != tex.getWidth() ){
         tex.allocate( pixels.getWidth(), pixels.getHeight(), GL_RGBA);
     }
     tex.loadData(pixels);
