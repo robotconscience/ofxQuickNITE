@@ -8,14 +8,9 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxNITE.h"
-#include <OpenNI.h>
+#include "ofxOpenNI.h"
 
 #define MAX_DEPTH 10000
-
-namespace ofxOpenNI {
-    static bool bInitialized = false;
-}
 
 class ofxOpenNIFeed : public ofBaseVideo, public ofThread
 {
@@ -24,7 +19,7 @@ public:
     ofxOpenNIFeed();
     ~ofxOpenNIFeed();
     
-    virtual openni::Status setup( string deviceUri = "" );
+    virtual bool setup( string deviceUri = "" );
     virtual void update();
     bool isFrameNew();
     virtual void draw( int x, int y );

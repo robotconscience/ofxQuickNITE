@@ -20,7 +20,7 @@ public:
     
     typedef map<int,ofPoint>::iterator handIterator;
     
-    bool open( string deviceUri = "" );
+    bool setup( string deviceUri = "" );
     void draw( int x, int y);
     void close();
     

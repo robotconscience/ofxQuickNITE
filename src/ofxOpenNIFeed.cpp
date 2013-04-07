@@ -21,19 +21,20 @@ ofxOpenNIFeed::~ofxOpenNIFeed()
 }
 
 //--------------------------------------------------------------
-openni::Status ofxOpenNIFeed::setup( string uri )
+bool ofxOpenNIFeed::setup( string uri )
 {
-    if (!ofxOpenNI::bInitialized){
-        ofxOpenNI::bInitialized = true;
-        openni::OpenNI::initialize();
+    openni::Status status = ofxOpenNI::initialize();
+    if ( status != openni::STATUS_OK ){
+        return false;
     }
+    
     const char* deviceUri = (uri == "" ? openni::ANY_DEVICE : uri.c_str());
     
     openni::Status rc = m_device.open(deviceUri);
     if (rc != openni::STATUS_OK)
     {
-        printf("Open Device failed:\n%s\n", openni::OpenNI::getExtendedError());
-        return rc;
+        ofLogError("Open Device failed:\n%s\n", openni::OpenNI::getExtendedError());
+        return false;
     }
     rc = depth.create(m_device, openni::SENSOR_DEPTH);
     
@@ -42,19 +43,19 @@ openni::Status ofxOpenNIFeed::setup( string uri )
         rc = depth.start();
         if (rc != openni::STATUS_OK)
         {
-            printf("SimpleViewer: Couldn't start depth stream:\n%s\n", openni::OpenNI::getExtendedError());
+            ofLogError("SimpleViewer: Couldn't start depth stream:\n%s\n", openni::OpenNI::getExtendedError());
             depth.destroy();
         }
     } else {
-        printf("Create depth stream failed:\n%s\n", openni::OpenNI::getExtendedError());
+        ofLogError("Create depth stream failed:\n%s\n", openni::OpenNI::getExtendedError());
         return rc;
     }
     
     if (!depth.isValid())
     {
-        printf("SimpleViewer: No valid streams. Exiting\n");
-        openni::OpenNI::shutdown();
-        return openni::STATUS_ERROR;
+        ofLogError("SimpleViewer: No valid streams. Exiting\n");
+        ofxOpenNI::shutdown();
+        return false;
     }
     
     // initialize pixels
@@ -82,8 +83,7 @@ void ofxOpenNIFeed::close(){
     if ( m_device.isValid() ){
         m_device.close();
     }
-    if ( ofxOpenNI::bInitialized ) openni::OpenNI::shutdown();
-    ofxOpenNI::bInitialized = false;
+    ofxOpenNI::shutdown();
 }
 
 //--------------------------------------------------------------
@@ -153,10 +153,7 @@ int ofxOpenNIFeed::getHeight(){
 
 //--------------------------------------------------------------
 vector< openni::DeviceInfo > ofxOpenNIFeed::enumerateDevices(){
-    if (!ofxOpenNI::bInitialized){
-        ofxOpenNI::bInitialized = true;
-        openni::OpenNI::initialize();
-    }
+    ofxOpenNI::initialize();
     
     static vector< openni::DeviceInfo > devices;
     devices.clear();

@@ -23,11 +23,11 @@ ofxNiteHandTracker::~ofxNiteHandTracker(){
 }
 
 //--------------------------------------------------------------
-bool ofxNiteHandTracker::open( string _deviceUri ){
+bool ofxNiteHandTracker::setup( string _deviceUri ){
     // setup device
     deviceUri = _deviceUri;
-    openni::Status rc = ofxOpenNIFeed::setup(deviceUri);
-    if ( rc != openni::STATUS_OK ){
+    bool bSetup = ofxOpenNIFeed::setup(deviceUri);
+    if ( !bSetup ){
         return false;
     }
     

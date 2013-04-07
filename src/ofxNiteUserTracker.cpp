@@ -8,192 +8,6 @@
 
 #include "ofxNiteUserTracker.h"
 
-#pragma mark ofxNiteLimb
-
-//--------------------------------------------------------------
-void ofxNiteLimb::update( ofxNiteUserTracker & tracker, const nite::SkeletonJoint & joint1, const nite::SkeletonJoint & joint2){
-    clear();
-    static ofPoint p1;
-    static ofPoint p2;
-    
-	tracker.getTracker()->convertJointCoordinatesToDepth(joint1.getPosition().x, joint1.getPosition().y, joint1.getPosition().z, &p1.x, &p1.y);
-	tracker.getTracker()->convertJointCoordinatesToDepth(joint2.getPosition().x, joint2.getPosition().y, joint2.getPosition().z, &p2.x, &p2.y);
-    
-    addVertex(p1);
-    addVertex(p2);
-}
-
-#pragma mark ofxNiteSkeleton
-
-//--------------------------------------------------------------
-ofxNiteSkeleton::ofxNiteSkeleton(){
-    limbs[ HEAD_TO_NECK ].addVertex(ofPoint(0,0));
-}
-
-//--------------------------------------------------------------
-map<ofxNiteLimbType, ofxNiteLimb> & ofxNiteSkeleton::getLimbs(){
-    return limbs;
-}
-
-//--------------------------------------------------------------
-ofxNiteLimb ofxNiteSkeleton::getLimb( ofxNiteLimbType type ){
-    if ( limbs.count(type) > 0){
-        return  limbs[type];
-    } else {
-        return ofxNiteLimb();
-    }
-}
-
-//--------------------------------------------------------------
-void ofxNiteSkeleton::update( ofxNiteUserTracker & tracker, nite::Skeleton skeleton ){
-    clear();
-    setupIndicesAuto();
-    setMode(OF_PRIMITIVE_LINES);
-    
-    limbs.clear();
-    
-    limbs[ HEAD_TO_NECK ].update(tracker, skeleton.getJoint(nite::JOINT_HEAD), skeleton.getJoint(nite::JOINT_NECK));
-    
-    limbs[ L_SHOULDER_ELBOW ].update(tracker, skeleton.getJoint(nite::JOINT_LEFT_SHOULDER), skeleton.getJoint(nite::JOINT_LEFT_ELBOW));
-    limbs[ L_ELBOW_HAND ].update(tracker, skeleton.getJoint(nite::JOINT_LEFT_ELBOW), skeleton.getJoint(nite::JOINT_LEFT_HAND));
-    
-    limbs[ R_SHOULDER_ELBOW].update(tracker, skeleton.getJoint(nite::JOINT_RIGHT_SHOULDER), skeleton.getJoint(nite::JOINT_RIGHT_ELBOW));
-    limbs[ R_ELBOW_HAND].update(tracker, skeleton.getJoint(nite::JOINT_RIGHT_ELBOW), skeleton.getJoint(nite::JOINT_RIGHT_HAND));
-    
-    limbs[ SHOULDERS ].update(tracker, skeleton.getJoint(nite::JOINT_LEFT_SHOULDER), skeleton.getJoint(nite::JOINT_RIGHT_SHOULDER));
-    
-    limbs[ L_TORSO_TOP ].update(tracker, skeleton.getJoint(nite::JOINT_LEFT_SHOULDER), skeleton.getJoint(nite::JOINT_TORSO));
-    limbs[ R_TORSO_TOP ].update(tracker, skeleton.getJoint(nite::JOINT_RIGHT_SHOULDER), skeleton.getJoint(nite::JOINT_TORSO));
-    limbs[ L_TORSO_BOTTOM ].update(tracker, skeleton.getJoint(nite::JOINT_TORSO), skeleton.getJoint(nite::JOINT_LEFT_HIP));
-    limbs[ R_TORSO_BOTTOM ].update(tracker, skeleton.getJoint(nite::JOINT_TORSO), skeleton.getJoint(nite::JOINT_RIGHT_HIP));
-    
-    limbs[ HIPS ].update(tracker, skeleton.getJoint(nite::JOINT_LEFT_HIP), skeleton.getJoint(nite::JOINT_RIGHT_HIP));
-    
-    limbs[ L_HIP_KNEE ].update(tracker, skeleton.getJoint(nite::JOINT_LEFT_HIP), skeleton.getJoint(nite::JOINT_LEFT_KNEE));
-    limbs[ L_KNEE_FOOT ].update(tracker, skeleton.getJoint(nite::JOINT_LEFT_KNEE), skeleton.getJoint(nite::JOINT_LEFT_FOOT));
-    limbs[ R_HIP_KNEE ].update(tracker, skeleton.getJoint(nite::JOINT_RIGHT_HIP), skeleton.getJoint(nite::JOINT_RIGHT_KNEE));
-    limbs[ R_KNEE_FOOT ].update(tracker, skeleton.getJoint(nite::JOINT_RIGHT_KNEE), skeleton.getJoint(nite::JOINT_RIGHT_FOOT));
-    
-    for (limbIterator it = limbs.begin(); it != limbs.end(); it++){
-        addVertices( it->second );
-    }
-}
-
-//--------------------------------------------------------------
-void ofxNiteSkeleton::addVertices( ofxNiteLimb limb ){
-    for (int i=0; i<limb.size(); i++){
-        addVertex(limb[i]);
-        addColor(ofFloatColor(1.0));
-    }
-}
-
-#pragma mark ofxNiteUser
-
-//--------------------------------------------------------------
-ofxNiteUser::ofxNiteUser(){
-    bHasSkeleton    = false;
-    bIsVisible      = false;
-    pixels.allocate(320, 240, 4);
-}
-
-//--------------------------------------------------------------
-void ofxNiteUser::updateTexture(){
-    if ( !tex.bAllocated()){
-        tex.allocate( pixels.getWidth(), pixels.getHeight(), GL_RGBA);
-    }
-    tex.loadData(pixels);
-}
-
-//--------------------------------------------------------------
-void ofxNiteUser::update( ofxNiteUserTracker & tracker, const nite::UserData& user, uint64_t ts ){
-    
-    bIsVisible = user.isVisible();
-    niteSkeleton = user.getSkeleton();
-    skeleton.clear();
-    
-    switch (user.getSkeleton().getState()) {
-        case nite::SKELETON_NONE:
-            bHasSkeleton = false;
-            break;
-		
-        case nite::SKELETON_TRACKED:
-            bHasSkeleton = true;
-            skeleton.update( tracker, niteSkeleton );
-			break;
-            
-		case nite::SKELETON_CALIBRATING:
-            ofLogVerbose()<<"Calibrating skeleton";
-            bHasSkeleton = false;
-            break;
-            
-		case nite::SKELETON_CALIBRATION_ERROR_NOT_IN_POSE:
-		case nite::SKELETON_CALIBRATION_ERROR_HANDS:
-		case nite::SKELETON_CALIBRATION_ERROR_LEGS:
-		case nite::SKELETON_CALIBRATION_ERROR_HEAD:
-		case nite::SKELETON_CALIBRATION_ERROR_TORSO:
-            bHasSkeleton = false;
-            break;
-    }
-}
-
-//--------------------------------------------------------------
-void ofxNiteUser::draw(){
-    ofEnableAlphaBlending();
-    tex.draw(0,0);
-    if ( bHasSkeleton ){
-        skeleton.draw();
-    }
-}
-
-//--------------------------------------------------------------
-ofxNiteSkeleton ofxNiteUser::getSkeleton(){
-    return skeleton;
-}
-
-//--------------------------------------------------------------
-nite::Skeleton ofxNiteUser::getNiteSkeleton(){
-    return niteSkeleton;
-}
-
-//--------------------------------------------------------------
-nite::SkeletonState ofxNiteUser::getNiteSkeletonState(){
-    return niteSkeleton.getState();
-}
-
-//--------------------------------------------------------------
-ofPixelsRef ofxNiteUser::getUserPixelsRef(){
-    return pixels;
-}
-
-//--------------------------------------------------------------
-unsigned char * ofxNiteUser::getUserPixels(){
-    return pixels.getPixels();
-}
-
-ofTexture ofxNiteUser::getTexture(){
-    return tex;
-}
-
-//--------------------------------------------------------------
-bool ofxNiteUser::hasSkeleton(){
-    return bHasSkeleton;
-}
-
-//--------------------------------------------------------------
-bool ofxNiteUser::isVisible(){
-    return bIsVisible;
-}
-
-//--------------------------------------------------------------
-void ofxNiteUser::updatePoints(){
-    
-}
-
-//--------------------------------------------------------------
-void ofxNiteUser::setFromPixels( ofPixels & pix ){
-    pixels = pix;
-}
-
 #pragma mark ofxNiteUserTracker
 
 //--------------------------------------------------------------
@@ -209,10 +23,13 @@ ofxNiteUserTracker::~ofxNiteUserTracker(){
 }
 
 //--------------------------------------------------------------
-bool ofxNiteUserTracker::open( string deviceUri ){
+bool ofxNiteUserTracker::setup( string deviceUri, bool bUseRGB ){
     // setup device
-    openni::Status rc = ofxOpenNIFeed::setup(deviceUri);
-    if ( rc != openni::STATUS_OK ){
+    settings.deviceURI  = deviceUri;
+    settings.doColor    = bUseRGB;
+    
+    bool bSetup = oniGrabber.setup(settings, false);
+    if ( !bSetup ){
         return false;
     }
     
@@ -225,7 +42,7 @@ bool ofxNiteUserTracker::open( string deviceUri ){
     // setup tracker
 	m_pUserTracker = new nite::UserTracker;
     
-    if (m_pUserTracker->create(&m_device) != nite::STATUS_OK){
+    if (m_pUserTracker->create(&oniGrabber.deviceController.device) != nite::STATUS_OK){
 		return false;
 	}
     
@@ -235,7 +52,6 @@ bool ofxNiteUserTracker::open( string deviceUri ){
 
 //--------------------------------------------------------------
 void ofxNiteUserTracker::update(){
-    ofxOpenNIFeed::update();
     
     lock();
     for (int i=0; i<toDelete.size(); i++){
@@ -265,13 +81,14 @@ void ofxNiteUserTracker::draw( int x, int y){
 void ofxNiteUserTracker::close(){
     if ( bOpen ){
         bOpen = false;
-        stop();
+//        stop();
         m_pUserTracker->destroy();
         if ( m_pUserTracker != NULL ){
             delete m_pUserTracker;
             m_pUserTracker = NULL;
         }
-        ofxOpenNIFeed::close();
+//        ofxOpenNIFeed::close();
+        oniGrabber.close();
         ofxNITE::shutDownNite();
     }
 }
@@ -293,18 +110,19 @@ void ofxNiteUserTracker::process(){
         return;
     }
     
-    nite::UserTrackerFrameRef userTrackerFrame;
-	openni::VideoFrameRef depthFrame;
+    static nite::UserTrackerFrameRef userTrackerFrame;
+	static openni::VideoFrameRef depthFrame;
 	nite::Status rc = m_pUserTracker->readFrame(&userTrackerFrame);
 	if (rc != nite::STATUS_OK){
 		printf("GetNextData failed\n");
 		return;
 	}
     
+    
 	depthFrame = userTrackerFrame.getDepthFrame();
     // update pixels of feed
     if ( depthFrame.isValid() ){
-        updatePixels( depthFrame );
+        oniGrabber.depthSource.updateFrame(depthFrame);
     }
     
     // current user pixels
