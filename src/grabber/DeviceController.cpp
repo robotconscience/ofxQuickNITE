@@ -27,7 +27,7 @@ void DeviceController::onDeviceStateChanged(const DeviceInfo*, DeviceState)
 	ofLogVerbose() << "onDeviceStateChanged";
 }
 
-void DeviceController::setup(ofxOpenNI2GrabberSettings _settings)
+Status DeviceController::setup(ofxOpenNI2GrabberSettings _settings)
 {
 	settings = _settings;
     enumerateDevices();
@@ -68,6 +68,7 @@ void DeviceController::setup(ofxOpenNI2GrabberSettings _settings)
 			ofLogWarning() << "If you are on the RPi and using the Xtion Pro, See /addons/ofxOpenNI2Grabber/libs/openni2/udev_rules_for_xtion_pro/README.txt";
 		}
 	}
+    return status;
 }
 //The Kinect/freenect driver does not find anything, The Xtion Pro has options
 const VideoMode* DeviceController::findMode(SensorType sensorType)

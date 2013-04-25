@@ -25,15 +25,17 @@ ofxNiteHandTracker::~ofxNiteHandTracker(){
 //--------------------------------------------------------------
 bool ofxNiteHandTracker::setup( string _deviceUri ){
     // setup device
-    deviceUri = _deviceUri;
-    bool bSetup = ofxOpenNIFeed::setup(deviceUri);
-    if ( !bSetup ){
-        return false;
-    }
+    settings.width      = 320;
+    settings.height     = 240;
+    settings.deviceURI  = _deviceUri;
+    settings.doColor    = false;
+    settings.doRawDepth = true;
+    
+    bool bSetup = ofxNiteTracker::setup(_deviceUri);
     
     m_pHandTracker = new nite::HandTracker;
     
-    if (m_pHandTracker->create( &m_device ) != nite::STATUS_OK)
+    if (m_pHandTracker->create( &oniGrabber.deviceController.device ) != nite::STATUS_OK)
     {
         return false;
     }
@@ -42,8 +44,11 @@ bool ofxNiteHandTracker::setup( string _deviceUri ){
         m_pHandTracker->startGestureDetection(trackingGestures[i]);
     }
     
-    cameraWidth = getWidth();
-    cameraHeight = getHeight();
+    cameraWidth     = settings.width;
+    cameraHeight    = settings.height;
+    
+    //cameraWidth = getWidth();
+    //cameraHeight = getHeight();
     
     // init nite
     if (! ofxNITE::niteInitialized ){
@@ -67,17 +72,16 @@ void ofxNiteHandTracker::close(){
             delete m_pHandTracker;
             m_pHandTracker = NULL;
         }
-        ofxOpenNIFeed::close();
+        oniGrabber.close();
         ofxNITE::shutDownNite();
     }
 }
 
 //--------------------------------------------------------------
 void ofxNiteHandTracker::draw( int x, int y){
-    ofxOpenNIFeed::draw(x,y);
-    
     ofPushMatrix();
     ofTranslate(x,y);
+    oniGrabber.draw();
     
     ofPushStyle();
     ofSetColor(255,255,0);
@@ -130,7 +134,7 @@ void ofxNiteHandTracker::process(){
     
     // update pixels of feed
     if ( depthFrame.isValid() ){
-        updatePixels( depthFrame );
+        //updatePixels( depthFrame );
     }
     
     // get current gestures

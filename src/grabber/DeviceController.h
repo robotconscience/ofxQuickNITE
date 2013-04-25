@@ -13,7 +13,7 @@ public OpenNI::DeviceConnectedListener
 {
 public:
 	DeviceController();
-	void setup(ofxOpenNI2GrabberSettings _settings);
+	Status setup(ofxOpenNI2GrabberSettings _settings);
 	Device device;
 	ofxOpenNI2GrabberSettings settings;
 	bool isKinect;

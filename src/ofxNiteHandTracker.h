@@ -8,11 +8,12 @@
 
 #pragma once
 #include "ofMain.h"
-#include "ofxOpenNIFeed.h"
+//#include "ofxOpenNIFeed.h"
+#include "ofxNiteTracker.h"
 
 #include "ofxNITE.h"
 
-class ofxNiteHandTracker : public ofxOpenNIFeed, public ofxNiteProcess //, public nite::HandTracker::NewFrameListener
+class ofxNiteHandTracker : public ofThread, public ofxNiteTracker //, public nite::HandTracker::NewFrameListener
 {
 public:
     ofxNiteHandTracker();
